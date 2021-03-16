@@ -18,5 +18,7 @@ A blog application that interacts with faux REST API: JSON Server.
 ## - [Node.js](https://nodejs.org/en/)
 ## - [Express.js](https://expressjs.com/)
 ## - [npm](https://www.npmjs.com/)
-## - [EJS](https://mozilla.github.io/nunjucks/)
+## - [MongoDB](https://www.mongodb.com/)
+## - [Mongoose](https://mongoosejs.com/)
+## - [EJS](https://ejs.co/)
 ## - [Bootstrap](https://getbootstrap.com/)

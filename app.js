@@ -1,9 +1,18 @@
 const { render } = require('ejs');
 const express = require('express');
+require('dotenv').config();
+const mongoose = require('mongoose');
 const morgan = require('morgan');
 const fetch = require('node-fetch');
+const { mongoURL } = require('./config');
 
+// Create Express App
 const app = express();
+
+// Connect to Mongo via Mongoose
+mongoose.connect(mongoURL, {
+    useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+
 app.set('view engine', 'ejs');
 app.listen(3000);
 
@@ -37,7 +46,6 @@ app.get('/blog/create', (req, res) => {
 
 // Create New Blog Post View - need to get slug from the post object on the index template.
 app.get('/blog/:slug', async (req, res) => {
-    console.log(req)
     // If req.method == GET
     const slug = req.params.slug;
 
