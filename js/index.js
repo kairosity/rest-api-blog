@@ -2,7 +2,7 @@
 const contentContainer = document.querySelector('.articles');
 
 const renderPosts = async () => {
-    let uri = 'http://localhost:9000/posts'
+    let uri = 'http://localhost:9000/posts?_sort=publish_date&_order=desc'
     
     const res = await fetch(uri);
     const articles = await res.json();
