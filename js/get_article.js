@@ -1,5 +1,5 @@
 const id = new URLSearchParams(window.location.search).get('id');
-console.log(`Post id is ${id}`)
+console.log(`Post id is ${id}`);
 const contentContainer = document.querySelector('.article-details');
 const commentContainer = document.querySelector('.comments');
 
@@ -12,7 +12,7 @@ const renderComments = async () => {
     let commentsToUse = [];
     let template = ``;
     comments.forEach(comment => {
-        if (comment.parent_id == id) commentsToUse.push(comment)
+        if (comment.post_id == id) commentsToUse.push(comment);
     });
     commentsToUse.forEach(comment => {
         template += `
@@ -20,10 +20,10 @@ const renderComments = async () => {
         <p>${comment.date}</p>
         <p>${comment.content}</p>
         `;
-    })
+    });
 
     commentContainer.innerHTML = template;
-}
+};
 
 const renderDetails = async () => {
     const res = await fetch('http://localhost:9000/posts/'+id);

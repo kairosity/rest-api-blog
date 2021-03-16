@@ -1,0 +1,17 @@
+// {
+//     "/api/*": "/$1",
+//     "/:resource/:id/show": "/:resource/:id",
+//     "/posts/:category": "/posts?category=:category",
+//     "/articles\\?id=:id": "/posts/:id"
+//   }
+
+//   Start JSON Server with --routes option.
+
+// json-server db.json --routes routes.json
+// Now you can access resources using additional routes.
+
+// /api/posts # → /posts
+// /api/posts/1  # → /posts/1
+// /posts/1/show # → /posts/1
+// /posts/javascript # → /posts?category=javascript
+// /articles?id=1 # → /posts/1
