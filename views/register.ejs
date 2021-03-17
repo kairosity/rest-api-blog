@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include('./partials/nav.ejs') %>
+
+            <main>
+                <div class="container">
+                    <div class="row">
+
+                        <h1 class="mt-4">Register</h1>
+                        <form class="mt-4" action="/register" method="POST">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" name="username" class="form-control" id="username"
+                                    aria-describedby="username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" name="email" class="form-control" id="email"
+                                    aria-describedby="emailHelp" required>
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" name="password" class="form-control" id="password"
+                                    aria-describedby="passwordHelp">
+                                <div id="passwordHelp" class="form-text">Please choose a password</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="passwordConfirmation" class="form-label">Password Confirmation</label>
+                                <input type="password" name="passwordConfirmation" class="form-control"
+                                    id="passwordConfirmation" aria-describedby="passwordConfirmationHelp">
+                                <div id="passwordConfirmationHelp" class="form-text">Please enter your new password
+                                    again</div>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" name="marketing" class="form-check-input" id="marketing">
+                                <label class="form-check-label" for="marketing">Please send me a monthly email
+                                    update.</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+
+                    </div>
+
+                </div>
+            </main>
+
+            <%- include('./partials/footer.ejs') %>
+
+                <%- include('./partials/scripts.ejs') %>
+
+    </body>
+
+</html>

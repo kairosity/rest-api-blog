@@ -12,7 +12,7 @@
                 <h3><%= post.title %></h3>
                 <p><%= post.author %></p>
                 <!-- somehow here I need to pass the article id to the view.  -->
-                <a href="/get_blog_post" class="btn btn-info">Read More</a>
+                <a href="/blog/<%= post.slug %>" class="btn btn-info">Read More</a>
             <% }); %>
         <% } else { %>
             <p>Sorry, but there are no articles to display.</p>
