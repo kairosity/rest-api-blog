@@ -1,13 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
 
+  <body>
+    <%- include('./partials/nav.ejs') %>
 
-<form>
-    <div class="mb-3">
-      <label for="email" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="email" aria-describedby="email">
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" name="password" class="form-control" id="password">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+      <main>
+        <div class="container">
+          <div class="row">
+            <h1 class="mt-4">Login</h1>
+            <form>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="email">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="password">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </main>
+
+      <%- include('./partials/footer.ejs') %>
+
+        <%- include('./partials/scripts.ejs') %>
+
+  </body>
+
+</html>

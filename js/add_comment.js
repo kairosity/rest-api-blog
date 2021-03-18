@@ -3,6 +3,8 @@ const commentForm = document.querySelector('.comment-form');
 const addComment = async (e) => {
     e.preventDefault();
 
+ 
+
     const comment = {
         author: commentForm.name.value,
         content: commentForm.comment.value 

@@ -149,10 +149,84 @@
       "content": "Nunc facilisis nisi vitae dapibus sodales. Proin vitae nunc turpis."
     },
     {
-      "author": "Georgina",
-      "content": "Decided I had to comment here.",
+      "id": 8,
+      "postId": 10,
+      "parentId": null,
+      "user": "rachel",
+      "date": "2021-03-17",
+      "content": "ftutyut5uryti"
+    },
+    {
+      "id": 9,
+      "postId": 2,
+      "parentId": null,
+      "user": "tracy",
+      "date": "2021-03-17",
+      "content": "Hi awesome post"
+    },
+    {
       "id": 10,
-      "postId": 2
+      "postId": 8,
+      "parentId": null,
+      "user": "cassie",
+      "date": "2021-03-17",
+      "content": "Hello I really enjoyed this article."
+    },
+    {
+      "id": 11,
+      "postId": 8,
+      "parentId": null,
+      "user": "gillian",
+      "date": "2021-03-17",
+      "content": "Great article. It moved me to tears."
+    },
+    {
+      "id": 12,
+      "postId": 8,
+      "parentId": null,
+      "user": "victoria",
+      "date": "2021-03-17",
+      "content": "Hello, I also really enjoyed this article."
+    },
+    {
+      "id": 13,
+      "postId": 9,
+      "parentId": null,
+      "user": "sdfjghk",
+      "date": "2021-03-17",
+      "content": "kjsdhbfk"
+    },
+    {
+      "id": 14,
+      "postId": 10,
+      "parentId": null,
+      "user": "freddy",
+      "date": "2021-03-17",
+      "content": "hsjkdghfsd"
+    },
+    {
+      "id": 15,
+      "postId": 7,
+      "parentId": null,
+      "user": "sdhfbkj",
+      "date": "2021-03-17",
+      "content": "kjsdbfk"
+    },
+    {
+      "id": 16,
+      "postId": 10,
+      "parentId": null,
+      "user": "sjdkgh",
+      "date": "2021-03-17",
+      "content": "kjshdfkj"
+    },
+    {
+      "id": 17,
+      "postId": 10,
+      "parentId": null,
+      "user": "sdkfjlk",
+      "date": "2021-03-17",
+      "content": "lksjdlf"
     }
   ]
 }

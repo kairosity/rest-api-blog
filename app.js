@@ -2,10 +2,16 @@ const { render } = require('ejs');
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
-const User = require('./models/users')
+const { authSchema } = require('./validation_schema.js')
+const createError = require('http-errors');
+const User = require('./models/users');
+const blogRoutes = require('./routes/blogRoutes');
 const morgan = require('morgan');
 const fetch = require('node-fetch');
 const { mongoURL } = require('./config');
+const bcrypt = require('bcrypt');
+const saltRounds = 12;
+
 
 // Create Express App
 const app = express();
@@ -20,102 +26,69 @@ app.set('view engine', 'ejs');
 
 // middleware & static files
 app.use(express.static('static'));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-/* ROUTES:
-- Home Redirect from / --> /blog
-- GET Home @ /blog (Lists all blogs each with a link to see the full post).
-- GET Individual blog post. 
-    - All the post details.
-    - Comments on the post.
-    - Ability for logged in users to add a comment.
-    - Ability for all users to like or dislike a comment.
-- POST New Comment to the API.
-    - POST route on the individual blog details page.
-    - Comment form under the end of the blog.
-    - Other comments appear underneath.
-    - Event Listeners on like & dislike buttons that POST to the api.
-- PUT Edit Comment.
-- DELETE Comment.
-- GET Register User Page.
-- POST New User
-- PUT User Account
-- DELETE User Account
-*/
-
-// GET HOME REDIRECT FROM / --> /blog
-app.get('/', async (req, res) => {
-    res.redirect('/blog');    
-});
-
-// GET HOME
-app.get('/blog', async (req, res) => {
-    async function getAllBlogPosts(){
-        let uri = 'http://localhost:9000/posts?_sort=publish_date&_order=desc';
-        const fetch_res = await fetch(uri);
-        let posts = await fetch_res.json();
-        return posts
-    }
-    const posts = await getAllBlogPosts();
-
-    res.render('index', { title: "Health Blog", posts: posts });
-});
-
-// GET INDIVIDUAL BLOG POST 
-app.get('/blog/:slug', async (req, res) => {
-    
-    const slug = req.params.slug;
-
-    // Find the blog from the api with the slug passed in.
-    async function getPost(){
-        let uri = `http://localhost:9000/posts?slug=${slug}`;
-        const fetch_res = await fetch(uri);
-        let post = await fetch_res.json();
-        return post[0]
-    }
-    let post = await getPost();
-
-    console.log(post)
-    // replace all incidences of <p> & </p> with actual markdown?
-    res.render('get_blog_post', { post: post, title: "Blog Post" });
-    
-});
+// blog routes
+app.use(blogRoutes);
 
 // GET REGISTER 
-app.get('/register', (req, res) => {
-    res.render('register', { title: "Register" });
+app.get('/register', (request, response) => {
+    response.render('register', { title: "Register" });
 });
 
-// POST REGISTER NEW USER
-app.post('/register', (req, res) => {
-    const user = new User(req.body);
 
-    user.save()
-        .then((result) => {
-            res.redirect('/blog');
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+// POST REGISTER NEW USER
+app.post('/register', async (request, response, next) => {
+
+    try {
+        const {username, email, password, passwordConfirmation} = request.body;
+        const result = await authSchema.validateAsync(request.body);
+
+        const usernameExists = await User.findOne({username: result.username});
+        if (usernameExists) {
+            throw createError.Conflict(`${result.username} already exists. If this is you, please login, otherwise choose a different username. Thank You.`)
+        }
+
+        const user = new User(result);
+        const savedUser = await user.save();
+        response.send(savedUser);
+    } catch (error) {
+        if (error.isJoi === true) error.status = 422;
+        next(error);
+    }
+});
+
+// GET LOGIN 
+app.get('/login', (request, response) => {
+    response.render('login', { title: "Login" });
+});
+
+// POST LOGIN
+app.post('/login', (request, response) => {
+    const user = new User(request.body);
+
+    let username = request.body.username;
+    let password = request.body.password;
 });
 
 // GET CREATE NEW BLOG (Admin only)
-app.get('/blog/create', (req, res) => {
-    res.render('create', { title: "Create New Blog Post" })
+app.get('/blog/create', (request, response) => {
+    response.render('create', { title: "Create New Blog Post" })
 });
 
 // POST CREATE NEW BLOG (Admin only)
-app.post('/blog/create', (req, res) => {
-    res.render('create', { title: "Create New Blog Post" })
+app.post('/blog/create', (request, response) => {
+    response.render('create', { title: "Create New Blog Post" })
 });
 
 // GET About Page View
-app.get('/about', (req, res) => {
-    res.render('about', { title: "About" });
+app.get('/about', (request, response) => {
+    response.render('about', { title: "About" });
 });
 
 // 404 Page View
-app.use((req, res) => {
-    res.status(404).render('404', { title: "404 Not Found!" });
+app.use((request, response) => {
+    response.status(404).render('404', { title: "404 Not Found!" });
 });
