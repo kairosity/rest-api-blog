@@ -2,15 +2,12 @@ const { render } = require('ejs');
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
-const { authSchema } = require('./validation_schema.js')
-const createError = require('http-errors');
-const User = require('./models/users');
 const blogRoutes = require('./routes/blogRoutes');
+const userRoutes = require('./routes/userRoutes');
 const morgan = require('morgan');
-const fetch = require('node-fetch');
+
 const { mongoURL } = require('./config');
-const bcrypt = require('bcrypt');
-const saltRounds = 12;
+
 
 
 // Create Express App
@@ -32,46 +29,10 @@ app.use(morgan('dev'));
 
 // blog routes
 app.use(blogRoutes);
-
-// GET REGISTER 
-app.get('/register', (request, response) => {
-    response.render('register', { title: "Register" });
-});
+// user routes
+app.use(userRoutes);
 
 
-// POST REGISTER NEW USER
-app.post('/register', async (request, response, next) => {
-
-    try {
-        const {username, email, password, passwordConfirmation} = request.body;
-        const result = await authSchema.validateAsync(request.body);
-
-        const usernameExists = await User.findOne({username: result.username});
-        if (usernameExists) {
-            throw createError.Conflict(`${result.username} already exists. If this is you, please login, otherwise choose a different username. Thank You.`)
-        }
-
-        const user = new User(result);
-        const savedUser = await user.save();
-        response.send(savedUser);
-    } catch (error) {
-        if (error.isJoi === true) error.status = 422;
-        next(error);
-    }
-});
-
-// GET LOGIN 
-app.get('/login', (request, response) => {
-    response.render('login', { title: "Login" });
-});
-
-// POST LOGIN
-app.post('/login', (request, response) => {
-    const user = new User(request.body);
-
-    let username = request.body.username;
-    let password = request.body.password;
-});
 
 // GET CREATE NEW BLOG (Admin only)
 app.get('/blog/create', (request, response) => {

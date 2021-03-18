@@ -227,6 +227,30 @@
       "user": "sdkfjlk",
       "date": "2021-03-17",
       "content": "lksjdlf"
+    },
+    {
+      "id": 18,
+      "postId": 10,
+      "parentId": null,
+      "user": "sjdfhksj",
+      "date": "2021-03-18",
+      "content": "kjsdhkf"
+    },
+    {
+      "id": 19,
+      "postId": 10,
+      "parentId": null,
+      "user": "just testing",
+      "date": "2021-03-18",
+      "content": "hello"
+    },
+    {
+      "id": 20,
+      "postId": 10,
+      "parentId": null,
+      "user": "franv",
+      "date": "2021-03-18",
+      "content": "skdjflsd"
     }
   ]
 }
