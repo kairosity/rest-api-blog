@@ -1,0 +1,106 @@
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "customVariables";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+
+$enable-shadows: true;
+$primary: $indigo;
+
+
+// BACKGROUND PAGE STYLES start
+body{
+  background-color: $white;
+  main{
+    padding-top: 70px;
+    .feature{
+      background: url(../images/navbar-img4.jpg) no-repeat;
+      background-position: center center;
+      height: 500px;
+      padding: 2rem 0;
+      .container{
+        background-color:rgba(255,255,255, 0.5);
+        padding: 30px 50px;
+        margin-top: 6rem;
+        h1{
+          font-size: 3rem;
+          color: $indigo;
+        }
+      }
+    }
+  }
+}
+// page styles end
+
+// TEXT STYLES
+.white-text{
+  color: $white;
+}
+.dark-text{
+  color: $indigo;
+}
+
+// NAVIGATION STYLES start
+// $navbar-gradient: linear-gradient(180deg, rgba($indigo, 1) 5%, rgba($cyan, .5));
+
+.navbar {
+  background: $cyan;
+  background-position: center center;
+  background-size: cover;
+  height: 100px;
+  clip-path: ellipse(100% 100% at 50% 0%);
+  .navbar-brand{
+    color: $indigo;
+    &:hover{
+      color: $indigo;
+      border-bottom: solid 2px $white;
+    }
+  }
+  .navbar-nav .nav-item .nav-link{
+  color: $indigo;
+  &:hover{
+    border-bottom: solid 2px $white;
+  }
+  }
+}
+
+// navigation styles end
+
+// BUTTON styles start
+
+.btn-primary{
+  background-color: $blue;
+  border-color: $blue;
+  &:hover{
+    background-color: $cyan;
+    border-color: $cyan;
+  }
+}
+
+// button styles end
+
+LANDING PAGE STYLES start
+.posts{
+  // background: url('../images/navbar-img4.jpg') no-repeat;
+  background-color: $blue;
+  margin-top: 5rem;
+  border-radius: 5px;
+}
+
+
+// landing page styles end
+  
+footer {
+  background: $cyan;
+  background-position: center center;
+  background-size: cover;
+  height: 300px;
+  clip-path: ellipse(100% 40% at 50% 100%);
+    .navbar-nav .nav-item .nav-link{
+    color: $indigo;
+    &:hover{
+      border-bottom: solid 2px $white;
+    }
+    }
+}

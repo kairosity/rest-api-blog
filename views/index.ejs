@@ -3,28 +3,41 @@
     <%- include('./partials/head.ejs') %>
 <body>
     <%- include('./partials/nav.ejs') %>
-<main>
-    <div class="posts">
-        <h2>Blog Posts will be listed here</h2>
-
+<main class="flex-container">
+    
+    <section class="feature">
+        <div class="container">
+            <h1 class="main-heading dark-text">This is the Title of the Page.</h1>
+            <p class="lead">This is an interesting featured blog, that is especially designed to catch your attention.</p>
+            <a class="" href="#">Read More...</a>
+        </div>
+    </section>
+    <section class="posts">
+        <div class="container">
+            <div class="row">
         <% if (posts.length > 0) { %>
             <% posts.forEach(post => { %>
-                <h3><%= post.title %></h3>
-                <p><%= post.author %></p>
+                <div class="col-md-4">
+                <h3 class="subheading dark-text lead"><%= post.title %></h3>
+                <p class="author dark-text"><%= post.author %></p>
                 <!-- somehow here I need to pass the article id to the view.  -->
-                <a href="/blog/<%= post.slug %>" class="btn btn-info">Read More</a>
+                <a class="read-more dark-text btn btn-primary" href="/blog/<%= post.slug %>" class="btn btn-info">Read More</a>
+            </div>
             <% }); %>
         <% } else { %>
+            <div class="col-md-4">
             <p>Sorry, but there are no articles to display.</p>
+        </div>
             <% } %>
-
-    </div>
+        </div>
+        </div>
+    </section>
 </main>
 
 
 <%- include('./partials/footer.ejs') %>
 
-<!-- <script type="application/javascript" src="/script.js"></script> -->
+
 <%- include('./partials/scripts.ejs') %>
 
 

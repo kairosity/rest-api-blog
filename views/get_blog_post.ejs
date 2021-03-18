@@ -63,8 +63,8 @@
                 const trash = document.querySelector('a.deleteComment');
                 console.log(trash.dataset.comId)
                 trash.addEventListener('click', (e) => {
-                    console.log(trash.dataset.comId)
-                    const endpoint = fetch(`http://localhost:9000/comments?id=${trash.dataset.comId}`;
+                    console.log(trash.dataset.comId);
+                    const endpoint = fetch(`http://localhost:9000/comments?id=${trash.dataset.comId}`);
                     fetch(endpoint, {
                         method: 'DELETE'
                     })
