@@ -16741,6 +16741,7 @@ body main .feature {
 }
 body main .feature .container {
   background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   padding: 30px 50px;
   margin-top: 6rem;
 }
@@ -16787,10 +16788,22 @@ body main .feature .container h1, body main .feature .container .h1 {
   border-color: transparent;
 }
 
-LANDING PAGE STYLES start .posts {
-  background-color: #0366c4;
-  margin-top: 5rem;
-  border-radius: 5px;
+.card {
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+.card .card-img-top {
+  box-shadow: black;
+}
+.card .card-body .post-title-link h3.card-title, .card .card-body .post-title-link .card-title.h3 {
+  text-decoration: none;
+  color: #343a40;
+}
+.card .card-body p.author,
+.card .card-body p.post-date {
+  color: #6c757d;
+}
+.card .card-body a.read-more {
+  color: #fff;
 }
 
 footer {
