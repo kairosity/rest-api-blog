@@ -16800,10 +16800,11 @@ footer {
   height: 150px;
   clip-path: ellipse(100% 100% at 50% 100%);
 }
-footer .navbar-nav .nav-item .nav-link {
+footer .navbar .nav-item .nav-link {
+  font-size: 1.4rem;
   color: #002ab3;
 }
-footer .navbar-nav .nav-item .nav-link:hover {
+footer .navbar .nav-item .nav-link:hover {
   border-bottom: solid 2px #fff;
 }
 

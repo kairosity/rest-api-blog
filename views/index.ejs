@@ -15,17 +15,27 @@
             <a class="btn btn-primary" href="#">Read More...</a>
         </div>
     </section>
-    <section class="posts">
+
+    <section class="posts mt-4">
         <div class="container">
-            <div class="row">
+            <div class="row row-cols-1 row-cols-md-3">
+                
         <% if (posts.length > 0) { %>
             <% posts.forEach(post => { %>
-                <div class="col-md-4">
-                <h3 class="subheading dark-text lead"><%= post.title %></h3>
-                <p class="author dark-text"><%= post.author %></p>
-                <!-- somehow here I need to pass the article id to the view.  -->
-                <a class="read-more dark-text btn btn-primary" href="/blog/<%= post.slug %>" class="btn btn-info">Read More</a>
-            </div>
+                <div class="col mb-4 d-flex">
+                <div class="card rounded d-flex">
+                    
+                    <img src="../static/images/navbar-img3.jpg" class="card-img-top" alt="<%= post.title %>">
+                    <div class="card-body d-flex flex-column justify-content-between m-2">
+                        <h3 class="subheading dark-text card-title"><%= post.title %></h3>
+                        <p class="author dark-text lead"><%= post.author %></p>
+                        <p class="author dark-text lead"><%= post.publish_date %></p>
+                        <!-- limit the content to a snippet of maybe 100chars -->
+                        <p class="card-text"><%= post.content %></p> 
+                        <a class="read-more dark-text btn btn-primary" href="/blog/<%= post.slug %>">Read More</a>
+                    </div>
+                    </div>
+                </div>
             <% }); %>
         <% } else { %>
             <div class="col-md-4">
@@ -35,6 +45,8 @@
         </div>
         </div>
     </section>
+
+
 </main>
 
 

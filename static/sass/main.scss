@@ -97,7 +97,8 @@ footer {
   background-size: cover;
   height: 150px;
   clip-path: ellipse(100% 100% at 50% 100%);
-    .navbar-nav .nav-item .nav-link{
+    .navbar .nav-item .nav-link{
+    font-size: 1.4rem;
     color: $indigo;
     &:hover{
       border-bottom: solid 2px $white;
