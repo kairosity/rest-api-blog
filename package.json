@@ -18,6 +18,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@hapi/joi": "^17.1.1",
+    "@popperjs/core": "^2.9.1",
     "bcrypt": "^5.0.1",
     "bootstrap": "^5.0.0-beta2",
     "dotenv": "^8.2.0",
@@ -25,6 +26,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "http-errors": "^1.8.0",
+    "jquery": "^3.6.0",
     "jshint": "^2.12.0",
     "json-server": "^0.14.0",
     "mongoose": "^5.12.0",

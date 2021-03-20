@@ -1,28 +1,35 @@
-
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import "customVariables";
 @import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
 @import "../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
+// CUSTOM VARIABLES start
 $enable-shadows: true;
 $primary: $indigo;
 $box-shadow:  0px 3px 15px rgba(0,0,0,0.2);
 $subheading-color: $gray-800;
 $byline-color: $gray-600;
+$transparency-white:rgba(255,255,255, 0.5);
+$blog-heading-font: "Cabin";
+$blog-p-font: "Source Sans Pro";
+// custom variables end
 
 // BACKGROUND PAGE STYLES start
 body{
   background-color: $white;
   main{
     padding-top: 70px;
+    padding-bottom:80px;
     .feature{
       background: url(../images/navbar-img4.jpg) no-repeat;
       background-position: center center;
       height: 500px;
       padding: 2rem 0;
       .container{
-        background-color:rgba(255,255,255, 0.5);
+        background-color: $transparency-white;
+        backdrop-filter: blur(6px);
         box-shadow: $box-shadow;
         padding: 30px 50px;
         margin-top: 6rem;
@@ -36,28 +43,27 @@ body{
 }
 // page styles end
 
-// TEXT STYLES
+// TEXT STYLES start
 .white-text{
   color: $white;
 }
 .dark-text{
   color: $indigo;
 }
+// text styles end
 
 // NAVIGATION STYLES start
-// $navbar-gradient: linear-gradient(180deg, rgba($indigo, 1) 5%, rgba($cyan, .5));
-
 .navbar {
   background: $cyan;
   background-position: center center;
   background-size: cover;
-  height: 100px;
-  clip-path: ellipse(100% 100% at 50% 0%);
+  min-height: 100px;
+  padding: 1rem;
   .navbar-brand{
     color: $indigo;
     font-size: 2.4rem;
     &:hover{
-      color: $indigo;
+      color: $pink;
     }
   }
   .navbar-nav .nav-item .nav-link{
@@ -71,7 +77,6 @@ body{
 // navigation styles end
 
 // BUTTON styles start
-
 .btn-primary{
   background-color: $blue;
   border-color: $blue;
@@ -80,8 +85,9 @@ body{
     border-color: transparent;
   }
 }
-
 // button styles end
+
+// CARD STYLES start
 .card{
   box-shadow: $box-shadow;
   .card-img-top{
@@ -103,19 +109,113 @@ body{
       }
     }
   }
-// landing page styles end
-  
+//card styles end
+
+// BLOG POST DETAILS PAGE STYLES start
+.blog-post-container{
+  padding-left: 0;
+  padding-right: 0;
+}
+// blog post details page styles end
+
+// BLOG POST HEADER STYLES start
+
+.blog-post-header{
+  padding-top: 10px;
+      .header-bg{
+        height: 25rem;
+        background: url('../images/navbar-img8.jpg') no-repeat;
+        object-fit: cover;
+        background-position: center center;
+        position: relative;
+        .container{
+          background-color: $transparency-white;
+          backdrop-filter: blur(6px);
+          width: 60%;
+          padding: 2.3rem;
+          border-radius: 5px;
+          box-shadow: 0 8px 6px -6px $gray-700;
+          h1{
+            font-family: $blog-heading-font;
+            font-size: 2rem;
+          }
+          p{
+            font-family: $blog-p-font;
+            font-weight: 400;
+            font-style: italic;
+            font-size: 1.3rem;
+          }
+        }
+
+      }
+  }
+
+// blog post header styles end
+
+// BLOG POST BODY STYLES start
+section.blog-post{
+  padding-top: 3rem;
+  .post-container{
+    .post-title{
+      font-weight: 300;
+      font-size: 3rem;
+    }
+    .author-container{
+      .headshot-container{
+      height: 50px;
+      width: 50px;
+      img.author-headshot{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+    .author-link{
+      margin-bottom: -40px;
+      margin-left: 20px;
+      letter-spacing: .7px;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+    }
+    .post-content{
+      font-size: 1.1rem;
+      line-height: 1.7;
+      letter-spacing: 0.3px;
+    }
+}
+}
+// blog post header styles end
+
+// FOOTER STYLES start
 footer {
   background: $cyan;
   background-position: center center;
   background-size: cover;
-  height: 150px;
-  clip-path: ellipse(100% 100% at 50% 100%);
-    .navbar .nav-item .nav-link{
-    font-size: 1.4rem;
-    color: $indigo;
-    &:hover{
-      border-bottom: solid 2px $white;
-    }
+  height: 80px;
+    .footbar{
+      .nav-item{
+        .nav-link{
+        font-size: 1.4rem;
+        color: $indigo;
+        &:hover{
+          color: $pink;
+        }
+        }
     }
 }
+}
+
+// footer styles end
+
+
+@include media-breakpoint-up(lg) {
+  .navbar{
+    clip-path: ellipse(100% 100% at 50% 0%);
+  }
+
+  footer {
+    clip-path: ellipse(100% 100% at 50% 100%);
+  }
+ }

@@ -5,9 +5,7 @@ const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes');
 const userRoutes = require('./routes/userRoutes');
 const morgan = require('morgan');
-
 const { mongoURL } = require('./config');
-
 
 
 // Create Express App

@@ -4,42 +4,63 @@
 
     <body>
         <%- include('./partials/nav.ejs') %>
-            <main class="container">
+
+            <main class="blog-post-container container-fluid">
+
+                <section class="blog-post-header">
+                    <div class="row">
+                    <div class="header-bg d-flex align-items-center">
+                    <div class="container d-flex flex-column ">
+                            <h1 class="align-self-center">"<%= quote %>"</h1>
+                            <p class="align-self-end">- <%= quote_author %> -</p>
+                        </div>
+                    </div>
+                </div>
+                </section>
                 <section class="blog-post">
                     <div class="row">
-                        <div class="post col-md-10 offset-md-1">
-                            <h1>Blog Post Details</h1>
-                            <h2>
-                                <%= post.title %>
-                            </h2>
-                            <h4>
-                                <%= post.author %>
-                            </h4>
-                            <p>
+                        <div class="post col-sm-10 col-md-6 offset-md-3 post-container d-flex flex-column">
+                            <h1 class="post-title align-self-center p-3"><%= post.title %></h1>
+                            <p class="align-self-center">
+                                <%= post.publish_date %>
+                            </p>
+                            
+                            <div class="author-container d-flex ">
+                                <div class="headshot-container">    
+                                    <img class="author-headshot" src="<%= post.author_headshot %>" alt="">
+                                </div>   
+                                <a class="author-link align-self-center" href="#"><p><%= post.author %></p></a>
+                            </div>
+                            <hr>
+                            
+                            <p class="post-content">
                                 <%= post.content %>
                             </p>
                         </div>
                 </section>
+
                 <section class="add-comment">
-                    <form class="commentForm col-md-10 offset-md-1" action="/blog/<%= post.slug %>" method="post">
+                    <form class="commentForm col-sm-10 col-md-6 offset-md-3" action="/blog/<%= post.slug %>" method="post">
                         <h3>Add a Comment</h3>
                         <div class="mb-3">
                             <label for="user" class="form-label">Name</label>
-                            <input type="text" name="user" class="form-control" id="user"
-                                aria-describedby="user" required>
+                            <input type="text" name="user" class="form-control" id="user" aria-describedby="user"
+                                required>
                             <input type="hidden" name="postId" id="postId" value="<%= post.id %>">
                             <input type="hidden" name="id" id="id" value="<%= id + 1 %>">
                         </div>
                         <div class="mb-3"></div>
-                        <textarea class="form-control form-control-lg" name="content" placeholder="Write your comment here..." id="content" cols="30"
-                            rows="5" required></textarea>
+                        <textarea class="form-control form-control-lg" name="content"
+                            placeholder="Write your comment here..." id="content" cols="30" rows="5"
+                            required></textarea>
                         </div>
                         <div class="mt-3">
-                        <button type="submit" class="btn btn-primary">Submit Comment</button>
-                    </div>
+                            <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        </div>
                     </form>
                 </section>
-                <section class="blog-comments col-md-10 offset-md-1">
+
+                <section class="blog-comments col-sm-10 col-md-6 offset-md-3">
                     <% comments.forEach(comment=> { %>
                         <p>
                             <%= comment.user %>
@@ -51,15 +72,16 @@
                         <% }); %>
                 </section>
 
-                </div>
-
             </main>
+
+
 
 
             <%- include('./partials/footer.ejs') %>
 
-            <%- include('./partials/scripts.ejs') %>
-            <script>
+                <%- include('./partials/scripts.ejs') %>
+
+                    <!-- <script>
                 const trash = document.querySelector('a.deleteComment');
                 console.log(trash.dataset.comId)
                 trash.addEventListener('click', (e) => {
@@ -72,8 +94,7 @@
                     .catch(err => console.log(err));
                 });
 
-            </script>
-
+            </script> -->
     </body>
 
 </html>

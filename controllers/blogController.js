@@ -28,7 +28,6 @@ const blog_details = async (request, response) => {
         }
         let post = await fetch_response.json();
         return post[0];
-        
     };
     const post = await getPost();
     const thisPostId = await post.id;
@@ -50,8 +49,41 @@ const blog_details = async (request, response) => {
     };
     const { commentsToUse, id } = await getComments();
 
+    const quotes = [
+        ["Good health is not something we can buy. However, it can be an extremely valuable savings account.", "Anne Wilson Schaef"],
+        ["There's nothing more important than good health - that's our principal capital asset.", "Arlen Specter"],
+        ["A healthy outside starts from the inside", "Robert Urich"],
+        ["Sleep is that golden chain that ties health and our bodies together", "Thomas Dekker"],
+        ["I believe the greatest gift you can give your family and the world is a healthy you.", "Joyce Meyer" ]
+    ];
+
+    let quote;
+    let quote_author;
+    switch (post.id % 5){
+        case 0:
+            quote = quotes[0][0];
+            quote_author = quotes[0][1];
+            break;
+        case 1:
+            quote = quotes[1][0];
+            quote_author = quotes[1][1];
+            break;
+        case 2:
+            quote = quotes[2][0];
+            quote_author = quotes[2][1];
+            break;
+        case 3:
+            quote = quotes[3][0];
+            quote_author = quotes[3][1];
+            break;
+        case 4:
+            quote = quotes[4][0];
+            quote_author = quotes[4][1];
+            break;
+    }
+
     // replace all incidences of <p> & </p> with actual markdown?
-    response.render('get_blog_post', { post: post, comments: commentsToUse, id: id, title: "Blog Post" });
+    response.render('get_blog_post', { post: post, comments: commentsToUse, id: id, title: "Blog Post", quote:quote, quote_author:quote_author });
 };
 //
 
@@ -75,6 +107,10 @@ const post_comment = async (request, response) => {
     });
     response.redirect(request.url)
 };
+
+
+
+
 
 module.exports = {
     blog_index,
