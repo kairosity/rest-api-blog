@@ -16734,7 +16734,7 @@ body {
 }
 body main {
   padding-top: 70px;
-  padding-bottom: 80px;
+  padding-bottom: 20px;
 }
 body main .feature {
   background: url(../images/navbar-img4.jpg) no-repeat;
@@ -16865,21 +16865,21 @@ body main .feature .container .content-hint a .fa-chevron-down {
 .blog-post-header .header-bg .container {
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(6px);
-  width: 60%;
+  width: 90%;
   padding: 2.3rem;
   border-radius: 5px;
   box-shadow: 0 8px 6px -6px #495057;
 }
 .blog-post-header .header-bg .container h1, .blog-post-header .header-bg .container .h1 {
   font-family: "Work Sans";
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: 300;
 }
 .blog-post-header .header-bg .container p {
   font-family: "Source Sans Pro";
   font-weight: 400;
   font-style: italic;
-  font-size: 1.3rem;
+  font-size: 0.9rem;
 }
 
 section.blog-post {
@@ -16923,39 +16923,42 @@ section.add-comment h3, section.add-comment .h3 {
   font-weight: 300;
 }
 
-.blog-comments .comment-count {
+.blog-comments .blog-comments-container {
+  margin: 0 1rem;
+}
+.blog-comments .blog-comments-container .comment-count {
   letter-spacing: 0.9px;
   margin-bottom: 1.2rem;
 }
-.blog-comments .comment-username {
+.blog-comments .blog-comments-container .comment-username {
   font-weight: 600;
   font-size: 1.2rem;
   margin-bottom: 0.3rem;
 }
-.blog-comments .comment-date {
+.blog-comments .blog-comments-container .comment-date {
   font-size: 0.8rem;
   font-style: italic;
 }
-.blog-comments a.btn-outline-primary {
+.blog-comments .blog-comments-container a.btn-outline-primary {
   padding: 0.14rem 0.45rem;
 }
-.blog-comments a.btn-outline-primary:hover {
+.blog-comments .blog-comments-container a.btn-outline-primary:hover {
   background-color: #dbedf0;
   border-color: #dbedf0;
   color: #002ab3;
 }
-.blog-comments a.btn-outline-danger {
+.blog-comments .blog-comments-container a.btn-outline-danger {
   padding: 0.14rem 0.45rem;
 }
-.blog-comments a.btn-outline-danger:hover {
+.blog-comments .blog-comments-container a.btn-outline-danger:hover {
   background-color: #dc3545;
   border-color: #dc3545;
   color: #fff;
 }
-.blog-comments .collapse form {
+.blog-comments .blog-comments-container .collapse form {
   margin-top: 1rem;
 }
-.blog-comments .comment-divider:last-of-type {
+.blog-comments .blog-comments-container .comment-divider:last-of-type {
   height: 0;
 }
 
@@ -17072,6 +17075,18 @@ footer p.copyright-notice {
   }
   body main .feature .container .content-hint .fa-chevron-down {
     font-size: 1.2rem;
+  }
+
+  .blog-post-header .header-bg .container {
+    width: 60%;
+  }
+  .blog-post-header .header-bg .container h1, .blog-post-header .header-bg .container .h1 {
+    font-size: 2rem;
+    font-weight: 300;
+  }
+  .blog-post-header .header-bg .container p {
+    font-weight: 400;
+    font-size: 1.3rem;
   }
 }
 @media (min-width: 992px) {

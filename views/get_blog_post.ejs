@@ -17,13 +17,16 @@
                 </section>
                 <section class="blog-post">
                     <div class="row">
+                        <div class="col-sm-3 offset-sm-1 col-md-3 offset-md-1 mx-3">
+                            <a href="<%= source_url %>"><p class="back-button"><i class="fas fa-long-arrow-alt-left"></i> Take me back</p></a> 
+                        </div>
                         <div class="post col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 post-container d-flex flex-column">
                             <h1 class="post-title align-self-center p-3"><%= post.title %></h1>
                             <p class="align-self-center">
                                 <%= post.publish_date %>
                             </p>
                             
-                            <div class="author-container d-flex ">
+                            <div class="author-container d-flex mx-3">
                                 <div class="headshot-container">    
                                     <img class="author-headshot" src="<%= post.author_headshot %>" alt="">
                                 </div>   
@@ -31,7 +34,7 @@
                             </div>
                             <hr class="mb-4">
                             
-                            <div class="post-content-container d-flex align-items-center row">
+                            <div class="post-content-container mx-2 d-flex align-items-center row">
                                 <p class="post-content p-4 col col-12 col-xl-7">
                                     <%= postContent %>
                                 </p>
@@ -43,7 +46,7 @@
                 </section>
                 
                 <section class="add-comment">
-                    <form class="commentForm col-sm-10 col-md-6 offset-md-3" action="/blog/<%= post.slug %>" method="post">
+                    <form class="commentForm col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3" action="/blog/<%= post.slug %>" method="post">
                         <hr>
                         <h3><i class="fas fa-pen-nib"></i> Add a Comment</h3>
                         <p>We're happy for you to leave a comment that is appropriate and in line with our <a href="#">comments policy</a>. Please
@@ -64,7 +67,8 @@
                     </form>
                 </section>
 
-                <section class="blog-comments col-sm-10 col-md-6 offset-md-3">
+                <section class="blog-comments col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    <div class="blog-comments-container">
                     <% if (comments.length == 1) { %>
                         <h4 class="comment-count">1 Comment</h4>
                     <% } else { %>
@@ -102,6 +106,7 @@
                         </div>
                         <hr class="comment-divider">
                         <% }); %>
+                    </div>
                 </section>
 
             </main>

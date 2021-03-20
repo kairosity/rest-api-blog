@@ -104,6 +104,8 @@ const blog_details = async (request, response) => {
             break;
     }
 
+    const source_url = request.header('Referer');
+
     // replace all incidences of <p> & </p> with actual markdown?
     response.render('get_blog_post', {  post: post,
                                         postContent: sanitizedContent2,
@@ -111,7 +113,8 @@ const blog_details = async (request, response) => {
                                         id: id, 
                                         title: "Blog Post", 
                                         quote:quote, 
-                                        quote_author:quote_author });
+                                        quote_author:quote_author,
+                                        source_url: source_url});
 };
 
 
