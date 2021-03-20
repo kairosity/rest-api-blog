@@ -186,7 +186,62 @@ section.blog-post{
     }
 }
 }
-// blog post header styles end
+// blog post body styles end
+
+// BLOG ADD COMMENT FORM STYLES start
+section.add-comment{
+  padding: 0 1.4rem 1.4rem 1.4rem;
+  h3{
+    font-weight: 300;
+  }
+}
+// blog add comment form styles end
+
+// BLOG COMMENTS STYLES start
+.blog-comments{
+  .comment-count{
+    letter-spacing: 0.9px;
+    margin-bottom: 1.2rem;
+  }
+  .comment-username{
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+  }
+  .comment-date{
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+  .comment-content{
+
+  }
+  a.btn-outline-primary{
+    padding: 0.14rem 0.45rem;
+    &:hover{
+      background-color: $cyan;
+      border-color: $cyan;
+      color: $indigo;
+    }
+  }
+  a.btn-outline-danger{
+    padding: 0.14rem 0.45rem;
+    &:hover{
+      background-color: $red;
+      border-color: $red;
+      color: $white;
+    }
+  }
+  .collapse{
+    form{
+      margin-top: 1rem;
+    }
+  }
+  .comment-divider:last-of-type{
+    height: 0;
+  }
+}
+
+// blog comments styles end
 
 // FOOTER STYLES start
 footer {

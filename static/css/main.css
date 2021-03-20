@@ -16873,6 +16873,49 @@ section.blog-post .post-container .post-content {
   letter-spacing: 0.3px;
 }
 
+section.add-comment {
+  padding: 0 1.4rem 1.4rem 1.4rem;
+}
+section.add-comment h3, section.add-comment .h3 {
+  font-weight: 300;
+}
+
+.blog-comments .comment-count {
+  letter-spacing: 0.9px;
+  margin-bottom: 1.2rem;
+}
+.blog-comments .comment-username {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+.blog-comments .comment-date {
+  font-size: 0.8rem;
+  font-style: italic;
+}
+.blog-comments a.btn-outline-primary {
+  padding: 0.14rem 0.45rem;
+}
+.blog-comments a.btn-outline-primary:hover {
+  background-color: #dbedf0;
+  border-color: #dbedf0;
+  color: #002ab3;
+}
+.blog-comments a.btn-outline-danger {
+  padding: 0.14rem 0.45rem;
+}
+.blog-comments a.btn-outline-danger:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+}
+.blog-comments .collapse form {
+  margin-top: 1rem;
+}
+.blog-comments .comment-divider:last-of-type {
+  height: 0;
+}
+
 footer {
   background: #dbedf0;
   background-position: center center;

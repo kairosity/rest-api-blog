@@ -197,6 +197,14 @@
       "user": "victoria",
       "date": "2021-03-17",
       "content": "Hello, I also really enjoyed this article."
+    },
+    {
+      "id": 13,
+      "postId": 2,
+      "parentId": null,
+      "user": "valerie",
+      "date": "2021-03-20",
+      "content": "This is a new comment"
     }
   ]
 }

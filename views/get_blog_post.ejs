@@ -31,44 +31,69 @@
                                 </div>   
                                 <a class="author-link align-self-center" href="#"><p><%= post.author %></p></a>
                             </div>
-                            <hr>
+                            <hr class="mb-4">
                             
-                            <p class="post-content">
+                            <p class="post-content p-4">
                                 <%= post.content %>
                             </p>
                         </div>
                 </section>
-
+                
                 <section class="add-comment">
                     <form class="commentForm col-sm-10 col-md-6 offset-md-3" action="/blog/<%= post.slug %>" method="post">
-                        <h3>Add a Comment</h3>
+                        <hr>
+                        <h3><i class="fas fa-pen-nib"></i> Add a Comment</h3>
+                        <p>We're happy for you to leave a comment that is appropriate and in line with our <a href="#">comments policy</a>. Please
+                        try not to leave spam, as our links are all nofollow. Let's just have an interesting conversation.</p>
                         <div class="mb-3">
-                            <label for="user" class="form-label">Name</label>
-                            <input type="text" name="user" class="form-control" id="user" aria-describedby="user"
-                                required>
+                            <input type="text" name="user" class="form-control" placeholder="Name" id="user" aria-describedby="user" required>
                             <input type="hidden" name="postId" id="postId" value="<%= post.id %>">
                             <input type="hidden" name="id" id="id" value="<%= id + 1 %>">
                         </div>
                         <div class="mb-3"></div>
-                        <textarea class="form-control form-control-lg" name="content"
-                            placeholder="Write your comment here..." id="content" cols="30" rows="5"
+                        <textarea class="form-control form-control-lg" name="content" id="content" cols="30" rows="3"
                             required></textarea>
                         </div>
                         <div class="mt-3">
-                            <button type="submit" class="btn btn-primary">Submit Comment</button>
+                            <button type="submit" class="btn btn-primary">Add Your Comment</button>
                         </div>
+                        <hr class="mt-4">
                     </form>
                 </section>
 
                 <section class="blog-comments col-sm-10 col-md-6 offset-md-3">
+                    <h4 class="comment-count"><%= comments.length %> Comments</h4>
                     <% comments.forEach(comment=> { %>
-                        <p>
+                        <p class="comment-username">
                             <%= comment.user %>
                         </p>
-                        <p>
+                        <p class="comment-date">Posted on: <%= comment.date %></p>
+                        <p class="comment-content">
                             <%= comment.content %>
                         </p>
-                        <a href="" class="deleteComment" data-comId="<%= comment.id %>">Delete</a>
+                        <a href="" class="replyComment btn btn-outline-primary btn-sml" type="button" data-bs-toggle="collapse" data-bs-target="#replyTo<%= comment.id %>" 
+                            aria-expanded="false" aria-controls="collapseExample" data-comId="<%= comment.id %>">Reply</a>
+                        <a href="" class="deleteComment btn btn-outline-danger" data-comId="<%= comment.id %>">Delete</a>
+
+                        <div class="collapse" id="replyTo<%= comment.id %>">
+                            <div class="">
+                            <form class="reply-comment-form">
+                                <div class="mb-3">
+                                    <input type="text" name="user" class="form-control" placeholder="Name" id="user" aria-describedby="user" required>
+                                    <input type="hidden" name="postId" id="postId" value="<%= post.id %>">
+                                    <input type="hidden" name="id" id="id" value="<%= id + 1 %>">
+                                </div>
+                                <div class="mb-3">
+                                <textarea class="form-control form-control-lg" name="content" id="content" cols="30" rows="3"
+                                    required></textarea>
+                                </div>
+                                <div class="mt-3">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        <hr class="comment-divider">
                         <% }); %>
                 </section>
 

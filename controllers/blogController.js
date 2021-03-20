@@ -31,9 +31,10 @@ const blog_details = async (request, response) => {
     };
     const post = await getPost();
     const thisPostId = await post.id;
-    // Gather all comments for this specific blog post.
+
+    // Fetches all comments for this specific blog post.
     const getComments = async () => {
-        const uri = await fetch('http://localhost:9000/comments/')
+        const uri = await fetch('http://localhost:9000/comments/?_sort=date&_order=desc')
         const fetch_response = await uri.json();
         const id = fetch_response.length;
         let commentsToUse = [];
@@ -49,6 +50,7 @@ const blog_details = async (request, response) => {
     };
     const { commentsToUse, id } = await getComments();
 
+    // Quotes to fill the blog article headers with.
     const quotes = [
         ["Good health is not something we can buy. However, it can be an extremely valuable savings account.", "Anne Wilson Schaef"],
         ["There's nothing more important than good health - that's our principal capital asset.", "Arlen Specter"],
@@ -83,9 +85,14 @@ const blog_details = async (request, response) => {
     }
 
     // replace all incidences of <p> & </p> with actual markdown?
-    response.render('get_blog_post', { post: post, comments: commentsToUse, id: id, title: "Blog Post", quote:quote, quote_author:quote_author });
-};
-//
+    response.render('get_blog_post', {  post: post, 
+                                        comments: commentsToUse, 
+                                        id: id, 
+                                        title: "Blog Post", 
+                                        quote:quote, 
+                                        quote_author:quote_author });
+    };
+
 
 const post_comment = async (request, response) => {
 
