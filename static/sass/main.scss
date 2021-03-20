@@ -35,11 +35,12 @@ body{
         padding: 30px 50px;
         margin-top: 6rem;
         h1{
-          font-size: 3rem;
+          font-size: 2rem;
           color: $indigo;
         }
         p{
           color: $main-text-color;
+          font-size: 1rem;
         }
         .content-hint{
           margin-top: 1rem;
@@ -48,11 +49,11 @@ body{
             text-decoration: none;
           h4{
             color: $main-text-color;
-            font-size: 1.4rem;
+            font-size: 0.9rem;
           }
           .fa-chevron-down{
             color: $main-text-color;
-            font-size: 1.2rem;
+            font-size: 0.9rem;
           } 
           }
           
@@ -127,6 +128,9 @@ body{
       p.author,
       p.post-date{
         color: $byline-color;
+      }
+      p.post-date{
+        font-size: 0.9rem;
       }
       p.card-text{
         color: $main-text-color;
@@ -396,7 +400,65 @@ footer {
 
 // MEDIA QUERIES start
 
+@include media-breakpoint-up(md){
+// BACKGROUND PAGE STYLES start
+body{
+  main{
+    .feature{
+      .container{
+        h1{
+          font-size: 3rem;
+        }
+        p{
+          font-size: 1.1rem;
+        }
+        .content-hint{
+          margin-top: 1rem;
+          h4{
+            font-size: 1.4rem;
+          }
+          .fa-chevron-down{
+            font-size: 1.2rem;
+          } 
+          }
+          
+        }
+        
+      }
+    }
+  }
+}
+
 @include media-breakpoint-up(lg) {
+// BACKGROUND PAGE STYLES start
+body{
+  main{
+    .feature{
+      .container{
+        h1{
+          font-size: 3rem;
+        }
+        p{
+          font-size: 1.3rem;
+        }
+        .content-hint{
+          margin-top: 1rem;
+          a{
+            h4{
+            font-size: 1.2rem;
+            }
+            .fa-chevron-down{
+              font-size: 1.2rem;
+            } 
+          }
+          }
+          
+        }
+        
+      }
+    }
+  }
+
   .navbar{
     clip-path: ellipse(100% 100% at 50% 0%);
   }

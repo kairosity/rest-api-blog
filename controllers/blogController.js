@@ -34,7 +34,14 @@ const blog_details = async (request, response) => {
         let post = await fetch_response.json();
         return post[0];
     };
-    const post = await getPost();
+    let post = await getPost();
+
+    // Sanitizes the post content of all the <p> tags:
+    const regex1 = /<p>/g;
+    const regex2 = /<\/p>/g;
+    let sanitizedContent1 = post.content.replace(regex1, "");
+    let sanitizedContent2 = sanitizedContent1.replace(regex2, "");
+    
     const thisPostId = await post.id;
     
 
@@ -98,7 +105,8 @@ const blog_details = async (request, response) => {
     }
 
     // replace all incidences of <p> & </p> with actual markdown?
-    response.render('get_blog_post', {  post: post, 
+    response.render('get_blog_post', {  post: post,
+                                        postContent: sanitizedContent2,
                                         comments: commentsToUse, 
                                         id: id, 
                                         title: "Blog Post", 

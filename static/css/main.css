@@ -16749,11 +16749,12 @@ body main .feature .container {
   margin-top: 6rem;
 }
 body main .feature .container h1, body main .feature .container .h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   color: #002ab3;
 }
 body main .feature .container p {
   color: #343a40;
+  font-size: 1rem;
 }
 body main .feature .container .content-hint {
   margin-top: 1rem;
@@ -16764,11 +16765,11 @@ body main .feature .container .content-hint a {
 }
 body main .feature .container .content-hint a h4, body main .feature .container .content-hint a .h4 {
   color: #343a40;
-  font-size: 1.4rem;
+  font-size: 0.9rem;
 }
 body main .feature .container .content-hint a .fa-chevron-down {
   color: #343a40;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 }
 
 .white-text {
@@ -16825,6 +16826,9 @@ body main .feature .container .content-hint a .fa-chevron-down {
 .card .card-body p.author,
 .card .card-body p.post-date {
   color: #6c757d;
+}
+.card .card-body p.post-date {
+  font-size: 0.9rem;
 }
 .card .card-body p.card-text {
   color: #343a40;
@@ -17043,7 +17047,40 @@ footer p.copyright-notice {
     transform: scale(1.2);
   }
 }
+@media (min-width: 768px) {
+  body main .feature .container h1, body main .feature .container .h1 {
+    font-size: 3rem;
+  }
+  body main .feature .container p {
+    font-size: 1.1rem;
+  }
+  body main .feature .container .content-hint {
+    margin-top: 1rem;
+  }
+  body main .feature .container .content-hint h4, body main .feature .container .content-hint .h4 {
+    font-size: 1.4rem;
+  }
+  body main .feature .container .content-hint .fa-chevron-down {
+    font-size: 1.2rem;
+  }
+}
 @media (min-width: 992px) {
+  body main .feature .container h1, body main .feature .container .h1 {
+    font-size: 3rem;
+  }
+  body main .feature .container p {
+    font-size: 1.3rem;
+  }
+  body main .feature .container .content-hint {
+    margin-top: 1rem;
+  }
+  body main .feature .container .content-hint a h4, body main .feature .container .content-hint a .h4 {
+    font-size: 1.2rem;
+  }
+  body main .feature .container .content-hint a .fa-chevron-down {
+    font-size: 1.2rem;
+  }
+
   .navbar {
     clip-path: ellipse(100% 100% at 50% 0%);
   }

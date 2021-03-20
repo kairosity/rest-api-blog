@@ -38,7 +38,7 @@
                         <p class="author dark-text lead"><%= post.author %></p>
                         <p class="post-date dark-text lead"><%= post.publish_date %></p>
                         <!-- limit the content to a snippet of maybe 100chars -->
-                        <p class="card-text"><%= post.content.substring(0, 200) %>...</p> 
+                        <p class="card-text"><%= post.description %></p> 
                         <a class="read-more dark-text btn btn-primary" href="/blog/<%= post.slug %>">Read More</a>
                     </div>
                     </div>
