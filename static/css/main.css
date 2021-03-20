@@ -6,6 +6,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 @import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap");
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -16742,7 +16743,7 @@ body main .feature {
   padding: 2rem 0;
 }
 body main .feature .container {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(6px);
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   padding: 30px 50px;
@@ -16751,6 +16752,8 @@ body main .feature .container {
 body main .feature .container h1, body main .feature .container .h1 {
   font-size: 2rem;
   color: #002ab3;
+  letter-spacing: 0.8px;
+  font-weight: 300;
 }
 body main .feature .container p {
   color: #343a40;
@@ -16813,6 +16816,11 @@ body main .feature .container .content-hint a .fa-chevron-down {
   border-color: transparent;
 }
 
+.login-form {
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+}
+
 .card {
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
@@ -16822,6 +16830,7 @@ body main .feature .container .content-hint a .fa-chevron-down {
 .card .card-body .post-title-link h3.card-title, .card .card-body .post-title-link .card-title.h3 {
   text-decoration: none;
   color: #343a40;
+  font-weight: 300;
 }
 .card .card-body p.author,
 .card .card-body p.post-date {
@@ -16847,13 +16856,14 @@ body main .feature .container .content-hint a .fa-chevron-down {
 }
 .blog-post-header .header-bg {
   height: 25rem;
-  background: url("../images/navbar-img8.jpg") no-repeat;
+  background: url("../images/blog-post-img.jpg") no-repeat;
+  filter: brightness(110%);
   object-fit: cover;
   background-position: center center;
   position: relative;
 }
 .blog-post-header .header-bg .container {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(6px);
   width: 60%;
   padding: 2.3rem;
@@ -16861,7 +16871,7 @@ body main .feature .container .content-hint a .fa-chevron-down {
   box-shadow: 0 8px 6px -6px #495057;
 }
 .blog-post-header .header-bg .container h1, .blog-post-header .header-bg .container .h1 {
-  font-family: "Cabin";
+  font-family: "Work Sans";
   font-size: 2rem;
   font-weight: 300;
 }
