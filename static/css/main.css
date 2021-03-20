@@ -16892,10 +16892,14 @@ section.blog-post .post-container .author-container .author-link {
   font-weight: 500;
   font-size: 1.1rem;
 }
-section.blog-post .post-container .post-content {
+section.blog-post .post-container .post-content-container .post-content {
   font-size: 1.1rem;
   line-height: 1.7;
   letter-spacing: 0.3px;
+}
+section.blog-post .post-container .post-content-container .post-photo-container img {
+  max-width: 100%;
+  object-fit: cover;
 }
 
 section.add-comment {

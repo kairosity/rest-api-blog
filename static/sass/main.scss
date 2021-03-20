@@ -207,11 +207,21 @@ section.blog-post{
       font-size: 1.1rem;
     }
     }
-    .post-content{
+    .post-content-container{
+      .post-content{
       font-size: 1.1rem;
       line-height: 1.7;
       letter-spacing: 0.3px;
     }
+    .post-photo-container{
+      
+      img{
+        max-width: 100%;
+        object-fit: cover;
+      }
+    }
+    }
+    
 }
 }
 // blog post body styles end

@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head.ejs') %>
-
     <body>
         <%- include('./partials/nav.ejs') %>
-
             <main class="blog-post-container container-fluid">
 
                 <section class="blog-post-header">
@@ -33,9 +31,14 @@
                             </div>
                             <hr class="mb-4">
                             
-                            <p class="post-content p-4">
-                                <%= post.content %>
-                            </p>
+                            <div class="post-content-container d-flex align-items-center row">
+                                <p class="post-content p-4 col col-12 col-xl-7">
+                                    <%= post.content %>
+                                </p>
+                                <div class="post-photo-container col-12 col-xl-5">
+                                    <img class="col" src="<%= post.photo %>" alt="">
+                                </div>
+                            </div>
                         </div>
                 </section>
                 
