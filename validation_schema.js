@@ -13,7 +13,7 @@ const commentSchema = Joi.object().keys({
     parentId: Joi.any(),
     user: Joi.string().trim().lowercase().required(),
     date: Joi.date(),
-    content: Joi.string().trim().min(5).max(8000).required(),
+    content: Joi.string().trim().min(5).max(6000).required(),
 });
 
 module.exports = {

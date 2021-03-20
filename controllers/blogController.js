@@ -1,7 +1,9 @@
 const { commentSchema } = require('../validation_schema.js')
 const fetch = require('node-fetch');
 
-// blog_index
+/* Blog Index Page / Landing Page
+- Returns a list of all the blogs in descending order by publish date using a query string.
+*/
 const blog_index = async (request, response) => {
     async function getAllBlogPosts(){
         let uri = 'http://localhost:9000/posts?_sort=publish_date&_order=desc';
@@ -14,12 +16,15 @@ const blog_index = async (request, response) => {
     response.render('index', { title: "Health Blog", posts: posts });
 };
 
-// blog_details
+/* Blog Detais Page
+- Returns the specific blog post from the api using the slug.
+- Returns all associated comments.
+- Creates a list of quotes and conditional code re: when to post which quote on the blog post header.
+*/
 const blog_details = async (request, response) => {
     
     const slug = request.params.slug;
 
-    // Get the specific blog post from the API
     const getPost = async () => {
         let uri = `http://localhost:9000/posts?slug=${slug}`;
         const fetch_response = await fetch(uri);
@@ -31,14 +36,22 @@ const blog_details = async (request, response) => {
     };
     const post = await getPost();
     const thisPostId = await post.id;
+    
 
-    // Fetches all comments for this specific blog post.
+/* Fetches all comments for this specific blog post.
+- Fetches comments from Api using Query String
+- Sends an ID to the view which is the next ID in the comment range for IF a user wants to Post a new comment.
+- Capitalizes all commenting user's names for clean display.
+- Filters the comments by ones which apply to this specific blog post.
+- Returns the filtered array of comments to display and the next id in the series.
+*/
     const getComments = async () => {
         const uri = await fetch('http://localhost:9000/comments/?_sort=date&_order=desc')
         const fetch_response = await uri.json();
         const id = fetch_response.length;
         let commentsToUse = [];
         fetch_response.forEach(comment => {
+            comment.user = comment.user.charAt(0).toUpperCase() + comment.user.slice(1);
             if (comment.postId == thisPostId){
                 commentsToUse.push(comment);
             } 
@@ -50,7 +63,7 @@ const blog_details = async (request, response) => {
     };
     const { commentsToUse, id } = await getComments();
 
-    // Quotes to fill the blog article headers with.
+    // An array of quotes to fill the blog article headers with.
     const quotes = [
         ["Good health is not something we can buy. However, it can be an extremely valuable savings account.", "Anne Wilson Schaef"],
         ["There's nothing more important than good health - that's our principal capital asset.", "Arlen Specter"],
@@ -91,15 +104,23 @@ const blog_details = async (request, response) => {
                                         title: "Blog Post", 
                                         quote:quote, 
                                         quote_author:quote_author });
-    };
+};
 
 
+/* Post New Comment Functionality
+- Validates the comment posted using Joi
+- Creates a new comment obj to post to API 
+- Gets the new comment ID from a hidden field on the comment form which is the length of comments + 1
+- Doesn't set parentID because I don't know what that refers to.
+- Sets the user, date and content.
+- POSTs the new & validated comment to the API & reloads the page.
+*/
 const post_comment = async (request, response) => {
 
     const result = await commentSchema.validateAsync(request.body);
 
     const commentToPost = {
-        id: parseInt(result.id), //find len of comments and then add 1
+        id: parseInt(result.id),
         postId: parseInt(result.postId),
         parentId: null,
         user: result.user,
@@ -114,10 +135,6 @@ const post_comment = async (request, response) => {
     });
     response.redirect(request.url)
 };
-
-
-
-
 
 module.exports = {
     blog_index,

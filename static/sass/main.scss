@@ -8,6 +8,7 @@
 // CUSTOM VARIABLES start
 $enable-shadows: true;
 $primary: $indigo;
+$main-text-color: $gray-800;
 $box-shadow:  0px 3px 15px rgba(0,0,0,0.2);
 $subheading-color: $gray-800;
 $byline-color: $gray-600;
@@ -37,6 +38,26 @@ body{
           font-size: 3rem;
           color: $indigo;
         }
+        p{
+          color: $main-text-color;
+        }
+        .content-hint{
+          margin-top: 1rem;
+          cursor: pointer;
+          a{
+            text-decoration: none;
+          h4{
+            color: $main-text-color;
+            font-size: 1.4rem;
+          }
+          .fa-chevron-down{
+            color: $main-text-color;
+            font-size: 1.2rem;
+          } 
+          }
+          
+        }
+        
       }
     }
   }
@@ -68,6 +89,9 @@ body{
   }
   .navbar-nav .nav-item .nav-link{
   color: $indigo;
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
   &:hover{
     border-bottom: solid 2px $white;
   }
@@ -104,6 +128,9 @@ body{
       p.post-date{
         color: $byline-color;
       }
+      p.card-text{
+        color: $main-text-color;
+      }
       a.read-more{
         color: $white;
       }
@@ -138,6 +165,7 @@ body{
           h1{
             font-family: $blog-heading-font;
             font-size: 2rem;
+            font-weight: 300;
           }
           p{
             font-family: $blog-p-font;
@@ -240,7 +268,6 @@ section.add-comment{
     height: 0;
   }
 }
-
 // blog comments styles end
 
 // FOOTER STYLES start
@@ -248,22 +275,116 @@ footer {
   background: $cyan;
   background-position: center center;
   background-size: cover;
-  height: 80px;
-    .footbar{
-      .nav-item{
-        .nav-link{
-        font-size: 1.4rem;
+  .links-row{
+    padding-top: 4rem;
+    .text-links-container{
+      .center-me{
+        align-self: center;
+        padding: 1.2rem;
+        .footer-heading{
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: $main-text-color;
+      }
+      .nav-link{
+        padding: 0;
+        margin: 0;
+        font-size: 0.8rem;
         color: $indigo;
         &:hover{
           color: $pink;
         }
-        }
+      }
+      }
+      
     }
+  }
+  .footer-social-media{
+    .social-media-container{
+    .footbar{
+        .nav-item{
+          .nav-link{
+            font-size: 1.1rem;
+            color: $indigo;
+            &:hover{
+            color: $pink;
+            }
+          }
+        }
+        
+      }
+  }
 }
-}
-
+  p.copyright-notice{
+    font-size: 0.9rem;
+    color: $main-text-color;
+  }
+} 
 // footer styles end
 
+
+// ANIMATIONS start
+.fa-chevron-down {
+	-webkit-animation: down-arrow 2s ease-in infinite;
+	animation: down-arrow 2s ease-in infinite;
+}
+@-webkit-keyframes down-arrow {
+	0% {
+		-webkit-transform: translate(0, 0px);
+		transform: translate(0, 0px);
+	}
+	25% {
+		-webkit-transform: translate(0, 0px);
+		transform: translate(0, 0px);
+	}
+	50% {
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
+	}
+	75% {
+		-webkit-transform: translate(0, 20px);
+		transform: translate(0, 20px);
+	}
+	100% {
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
+	}
+}
+@keyframes down-arrow {
+	0% {
+		-webkit-transform: translate(0, 0px);
+		transform: translate(0, 0px);
+	}
+	25% {
+		-webkit-transform: translate(0, 0px);
+		transform: translate(0, 0px);
+	}
+	50% {
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
+	}
+	75% {
+		-webkit-transform: translate(0, 20px);
+		transform: translate(0, 20px);
+	}
+	100% {
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
+	}
+}
+
+.fa-heartbeat{
+  -webkit-animation: heartbeat 1s infinite alternate;
+	animation: heartbeat 1s infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes heartbeat {
+	to { transform: scale(1.2); }
+}
+// animations end
+
+// MEDIA QUERIES start
 
 @include media-breakpoint-up(lg) {
   .navbar{
@@ -274,3 +395,5 @@ footer {
     clip-path: ellipse(100% 100% at 50% 100%);
   }
  }
+
+//  media queries end

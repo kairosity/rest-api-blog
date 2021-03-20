@@ -16752,6 +16752,24 @@ body main .feature .container h1, body main .feature .container .h1 {
   font-size: 3rem;
   color: #002ab3;
 }
+body main .feature .container p {
+  color: #343a40;
+}
+body main .feature .container .content-hint {
+  margin-top: 1rem;
+  cursor: pointer;
+}
+body main .feature .container .content-hint a {
+  text-decoration: none;
+}
+body main .feature .container .content-hint a h4, body main .feature .container .content-hint a .h4 {
+  color: #343a40;
+  font-size: 1.4rem;
+}
+body main .feature .container .content-hint a .fa-chevron-down {
+  color: #343a40;
+  font-size: 1.2rem;
+}
 
 .white-text {
   color: #fff;
@@ -16777,6 +16795,9 @@ body main .feature .container h1, body main .feature .container .h1 {
 }
 .navbar .navbar-nav .nav-item .nav-link {
   color: #002ab3;
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
 }
 .navbar .navbar-nav .nav-item .nav-link:hover {
   border-bottom: solid 2px #fff;
@@ -16804,6 +16825,9 @@ body main .feature .container h1, body main .feature .container .h1 {
 .card .card-body p.author,
 .card .card-body p.post-date {
   color: #6c757d;
+}
+.card .card-body p.card-text {
+  color: #343a40;
 }
 .card .card-body a.read-more {
   color: #fff;
@@ -16835,6 +16859,7 @@ body main .feature .container h1, body main .feature .container .h1 {
 .blog-post-header .header-bg .container h1, .blog-post-header .header-bg .container .h1 {
   font-family: "Cabin";
   font-size: 2rem;
+  font-weight: 300;
 }
 .blog-post-header .header-bg .container p {
   font-family: "Source Sans Pro";
@@ -16920,16 +16945,100 @@ footer {
   background: #dbedf0;
   background-position: center center;
   background-size: cover;
-  height: 80px;
 }
-footer .footbar .nav-item .nav-link {
-  font-size: 1.4rem;
+footer .links-row {
+  padding-top: 4rem;
+}
+footer .links-row .text-links-container .center-me {
+  align-self: center;
+  padding: 1.2rem;
+}
+footer .links-row .text-links-container .center-me .footer-heading {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #343a40;
+}
+footer .links-row .text-links-container .center-me .nav-link {
+  padding: 0;
+  margin: 0;
+  font-size: 0.8rem;
   color: #002ab3;
 }
-footer .footbar .nav-item .nav-link:hover {
+footer .links-row .text-links-container .center-me .nav-link:hover {
   color: #d63384;
 }
+footer .footer-social-media .social-media-container .footbar .nav-item .nav-link {
+  font-size: 1.1rem;
+  color: #002ab3;
+}
+footer .footer-social-media .social-media-container .footbar .nav-item .nav-link:hover {
+  color: #d63384;
+}
+footer p.copyright-notice {
+  font-size: 0.9rem;
+  color: #343a40;
+}
 
+.fa-chevron-down {
+  -webkit-animation: down-arrow 2s ease-in infinite;
+  animation: down-arrow 2s ease-in infinite;
+}
+
+@-webkit-keyframes down-arrow {
+  0% {
+    -webkit-transform: translate(0, 0px);
+    transform: translate(0, 0px);
+  }
+  25% {
+    -webkit-transform: translate(0, 0px);
+    transform: translate(0, 0px);
+  }
+  50% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  75% {
+    -webkit-transform: translate(0, 20px);
+    transform: translate(0, 20px);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@keyframes down-arrow {
+  0% {
+    -webkit-transform: translate(0, 0px);
+    transform: translate(0, 0px);
+  }
+  25% {
+    -webkit-transform: translate(0, 0px);
+    transform: translate(0, 0px);
+  }
+  50% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  75% {
+    -webkit-transform: translate(0, 20px);
+    transform: translate(0, 20px);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+.fa-heartbeat {
+  -webkit-animation: heartbeat 1s infinite alternate;
+  animation: heartbeat 1s infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes heartbeat {
+  to {
+    transform: scale(1.2);
+  }
+}
 @media (min-width: 992px) {
   .navbar {
     clip-path: ellipse(100% 100% at 50% 0%);

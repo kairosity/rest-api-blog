@@ -62,7 +62,11 @@
                 </section>
 
                 <section class="blog-comments col-sm-10 col-md-6 offset-md-3">
-                    <h4 class="comment-count"><%= comments.length %> Comments</h4>
+                    <% if (comments.length == 1) { %>
+                        <h4 class="comment-count">1 Comment</h4>
+                    <% } else { %>
+                        <h4 class="comment-count"><%= comments.length %> Comments</h4>
+                    <% } %>
                     <% comments.forEach(comment=> { %>
                         <p class="comment-username">
                             <%= comment.user %>
