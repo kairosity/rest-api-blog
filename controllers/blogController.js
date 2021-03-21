@@ -36,7 +36,7 @@ const blog_details = async (request, response) => {
     };
     let post = await getPost();
 
-    // Sanitizes the post content of all the <p> tags:
+    // Cleanses the post content of all the <p></p> tags:
     const regex1 = /<p>/g;
     const regex2 = /<\/p>/g;
     let sanitizedContent1 = post.content.replace(regex1, "");
@@ -106,7 +106,6 @@ const blog_details = async (request, response) => {
 
     const source_url = request.header('Referer');
 
-    // replace all incidences of <p> & </p> with actual markdown?
     response.render('get_blog_post', {  post: post,
                                         postContent: sanitizedContent2,
                                         comments: commentsToUse, 
