@@ -1,21 +1,19 @@
 const { authSchema } = require('../validation_schema.js');
 const User = require('../models/users');
 const bcrypt = require('bcryptjs');
+const {getSession, getUser} = require('../helpers');
 
 
 // get register_page
 const register_user_page = (request, response) => {
     
-    let session;
-    let passport = request.session.passport;
-    if (passport == null || Object.keys(passport).length < 1){
-        session = false;
-    } else {
-        session = true;
-    }
-    console.log(request.session)
-    console.log(session)
-    response.render('register', { title: "Register", session: session });
+    let session = getSession(request);
+    let username = getUser(request);
+    response.render('register', { 
+                                title: "Register", 
+                                session: session, 
+                                username: username
+                                });
 };
 
 // register_user
@@ -23,7 +21,8 @@ const register_user = async (request, response, next) => {
 
     try {
         // Get form user details.
-        const userDetails =  {username, email, password, passwordConfirmation} = request.body;
+        const userDetails =  { username, email, password, passwordConfirmation } = request.body;
+
         // Validations using Joi
         const result = await authSchema.validateAsync(request.body);
 
@@ -55,7 +54,6 @@ const register_user = async (request, response, next) => {
                 title: "Register"
             });
         } else {
-
             const newUser = new User({
                 username: result.username,
                 email: result.email, 
@@ -86,31 +84,27 @@ const register_user = async (request, response, next) => {
 // get login page
 const login_page = (request, response) => {
     
-    let session;
-    let passport = request.session.passport;
-    if (passport == null || Object.keys(passport).length < 1){
-        session = false;
-    } else {
-        session = true;
-    }
-    console.log(request.session)
-    response.render('login', { title: "Login", session: session });
+    let session = getSession(request);
+    let username = getUser(request);
+    console.log(username);
+    response.render('login', { 
+                    title: "Login", 
+                    session: session, 
+                    username: username 
+                    });
 };
 
 // get user dashboard
 const user_dashboard = (request, response) => {
-    let session;
-    let passport = request.session.passport;
-    if (passport == null || Object.keys(passport).length < 1){
-        session = false;
-    } else {
-        session = true;
-    }
-    console.log(request.session)
+    
+    let session = getSession(request);
+    let username = getUser(request);
+    console.log(request.user)
+
     response.render('user_dashboard', { 
-                    title: "User Dashboard", 
-                    user: request.user.username,
-                    session: session 
+                    title: "User Dashboard",
+                    session: session,
+                    username: username 
                     });
 };
 

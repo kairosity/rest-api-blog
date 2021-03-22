@@ -1,6 +1,7 @@
 const { commentSchema } = require('../validation_schema.js')
 const fetch = require('node-fetch');
 const { response } = require('express');
+const {getSession, getUser} = require('../helpers');
 
 /* Blog Index Page / Landing Page
 - Returns a list of all the blogs in descending order by publish date using a query string.
@@ -16,16 +17,15 @@ const blog_index = async (request, response) => {
         return posts;
     }
     const posts = await getAllBlogPosts();
-    let session;
-    let passport = request.session.passport;
-    if (passport == null || Object.keys(passport).length < 1){
-        session = false;
-    } else {
-        session = true;
-    }
-    console.log(request.session)
+    let session = getSession(request);
+    let username = getUser(request);
 
-    response.render('index', { title: "Health Blog", posts: posts, session: session });
+    response.render('index', { 
+                                title: "Health Blog", 
+                                posts: posts, 
+                                session: session,
+                                username: username 
+                            });
 };
 /* Blog Search Function
 - Returns a filtered list of all the blog posts that match the search term in descending order by publish date.
@@ -42,15 +42,16 @@ const blog_search = async(request, response) => {
         return posts;
     }
     const posts = await getFilteredBlogPosts(keyword);
-    let session;
-    let passport = request.session.passport;
-    if (passport == null || Object.keys(passport).length < 1){
-        session = false;
-    } else {
-        session = true;
-    }
-    console.log(request.session)
-    response.render('index', { title: `Health Blog: ${keyword}`, posts: posts, session: session });
+
+    let session = getSession(request);
+    let username = getUser(request);
+
+    response.render('index', { 
+                                title: `Health Blog: ${keyword}`, 
+                                posts: posts, 
+                                session: session, 
+                                username: username 
+                            });
 
 };
 
@@ -145,14 +146,9 @@ const blog_details = async (request, response) => {
     }
 
     const source_url = request.header('Referer');
-    let session;
-    let passport = request.session.passport;
-    if (passport == null || Object.keys(passport).length < 1){
-        session = false;
-    } else {
-        session = true;
-    }
-    console.log(request.session)
+    
+    let session = getSession(request);
+    let username = getUser(request);
 
     response.render('get_blog_post', {  post: post,
                                         postContent: sanitizedContent2,
@@ -162,7 +158,8 @@ const blog_details = async (request, response) => {
                                         quote:quote, 
                                         quote_author:quote_author,
                                         source_url: source_url,
-                                        session: session
+                                        session: session, 
+                                        username: username
                                     });
 };
 

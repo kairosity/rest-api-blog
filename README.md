@@ -18,7 +18,10 @@ A blog application that interacts with faux REST API: JSON Server.
 # Site Wide:
 - Fully responsive navbar with 3 links. 
 - Search form successfully queries the blog posts for keywords and returns the results ordered by most recent first.
-- Fully responsive dummy footer replete with social media & 3 sets of other dummy links. 
+- Fully responsive dummy footer replete with social media & 3 sets of other dummy links.
+- Fully responsive navbar with conditional navigation: 
+  - If a user is logged in they see a link to "home", another to their dashboard and one to 'logout'.
+  - If a user is not logged in, they see 3 links: "Home", "Register" & "Login".
 
 ## Landing Page Features:
 - A header and page intro with content hinting.
@@ -34,29 +37,52 @@ A blog application that interacts with faux REST API: JSON Server.
 - Comments are displayed in a single column, most recent listed first.
 - Adding comments is fully functional.
 - Replying & deleting comments is not functional.
+- If a user is logged in, their username is auto-populated in the "Name" input field of the "Add a New Comment" form.
+
+## User Dashboard Features
+- This page is not fleshed out. Its purpose is to serve as proof of concept for the registration & login features.
+- Theoretically I was thinking of attaching a "save post" button to each individual blog article and links to those articles 
+would appear listed on the dashboard, which when clicked, would redirect to the post details page.
 
 ## Back-End
 - The index page fetches blog listings successfully from the JSON-Server API.
 - The blog post page fetches a single blog post from the JSON-SERVER API.
 - The add comment form fetches a POST request from the JSON-SERVER API.
 - The site is connected successfully to MongoDB 
-- User registration works, the user data is validated by Joi, the user password is hashed using 
-  bcrypt and users are saved to a User object in Mongo.
+- Users can register an account, their details are stored in MongoDB via Mongoose and their password is salted & hashed
+  using Bcrypt. 
+- User data is validated first by Bootstrap Forms, then by Joi, then by custom validations.
+- Users are authenticated using Passport.js
+
+## SEO
+- Meta tags are incorporated into all pages. Most importantly: geo, keywords & description.
+- All pages have relevant "keyworded" title tags. 
+- The blog details page uses keyword-rich "slugs" instead of ids.
+- All links are functional. 
+- (Hypothetically) - All headings match keyword research & strategies. 
+
+## Accessibility
+- All elements are keyboard accessible. 
+- Skip to Main Link functional on all pages for good keyboard user UX & accessibility.
+- Contrast, sizing & colour accessibility is all excellent.
+- Site is viewable & functional up to page zoom of 200%.
+- All forms have ariaDescribedBy attributes. 
+- Wherever possible and logical HTML elements are semantic. Posts are <articles> etc..
 
 <br>
 
 # Future Potential Functionality
 - Pagination of the index page blog listings.
-- Registered users can login & a session is started when they do.
-- Only logged in users can comment.
-- Users can delete and edit their own comments.
-- There is also an admin login.
-- Admins can create new blog posts.
-- Admins can edit & delete blog posts.
+- Perhaps making it so that only logged-in users can comment.
+- Allowing users to delete and edit their own comments.
+- Making the "reply" on comments functional.
+- Creating an admin login.
+- Allowing admins to create new blog posts.
+- Allowing admins to edit & delete blog posts.
 
 <br>
 
-# Libraries / Frameworks / Tech Used
+# Libraries / Frameworks / Important Modules Used
 
 ## - [Node.js](https://nodejs.org/en/)
 ## - [Express.js](https://expressjs.com/)
@@ -64,6 +90,8 @@ A blog application that interacts with faux REST API: JSON Server.
 ## - [MongoDB](https://www.mongodb.com/)
 ## - [Mongoose](https://mongoosejs.com/)
 ## - [EJS](https://ejs.co/)
+## - [Passport.js](http://www.passportjs.org/)
+## - [BcryptJS](https://github.com/dcodeIO/bcrypt.js#readme)
 ## - [Bootstrap](https://getbootstrap.com/)
 
 <br>

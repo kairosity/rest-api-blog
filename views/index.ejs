@@ -5,10 +5,11 @@
     and exercise.'>
 <body>
     <%- include('./partials/nav.ejs') %>
-
-<main class="flex-container">
     
+
+<main  class="flex-container">
     <section class="feature">
+        <%- include('./partials/skip-to-main.ejs') %>
         <div class="container d-flex flex-column">
             <h1 class="main-heading dark-text">Welcome to this Health Blog</h1>
             <p class="lead">This is an interesting blog featuring lots of different articles about health, nutrition and longevity.
@@ -18,7 +19,7 @@
             </p>
             <div  class="content-hint align-self-center d-flex flex-column">
                 <a class="align-self-center d-flex flex-column" href="#firstSection">
-                <h4 class="align-self-center" >Scroll down to learn more...</h4>
+                <h4 id="main" class="align-self-center" >Scroll down to learn more...</h4>
                 <i class="fas fa-chevron-down align-self-center"></i>
                 </a>
             </div>
@@ -39,7 +40,6 @@
                         <a class="post-title-link" style="text-decoration:none;" href="/blog/<%= post.slug %>"><h3 class="subheading dark-text card-title"><%= post.title %></h3></a>
                         <p class="author dark-text lead"><%= post.author %></p>
                         <p class="post-date dark-text lead"><%= post.publish_date %></p>
-                        <!-- limit the content to a snippet of maybe 100chars -->
                         <p class="card-text"><%= post.description %></p> 
                         <a class="read-more dark-text btn btn-primary" href="/blog/<%= post.slug %>">Read More</a>
                     </div>

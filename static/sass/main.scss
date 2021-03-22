@@ -61,7 +61,7 @@ body{
     padding-top: 70px;
     padding-bottom:20px;
     .feature{
-      background: url(../images/navbar-img4.jpg) no-repeat;
+      background: url(../images/home.jpg) no-repeat;
       background-position: center center;
       height: 500px;
       padding: 2rem 0;
@@ -81,6 +81,7 @@ body{
         p{
           color: $main-text-color;
           font-size: 1rem;
+          list-style-type: none;
         }
         .content-hint{
           margin-top: 1rem;
@@ -96,14 +97,25 @@ body{
             font-size: 0.9rem;
           } 
           }
-          
-        }
-        
+        }   
       }
     }
   }
 }
 // page styles end
+
+a.skip-to-main {
+	opacity: 0;
+	text-transform: uppercase;
+  text-decoration: none;
+	pointer-events: none;
+	cursor: default;
+  padding-top: 80px;
+}
+a.skip-to-main:focus {
+	color: $indigo;
+  opacity: 1;
+}
 
 // TEXT STYLES start
 .white-text{
@@ -166,6 +178,16 @@ body{
   margin-bottom: 3rem;
   box-shadow: $form-box-shadow;
   border-radius: $subtle-corners;
+}
+.register-form{
+  margin-top: 0rem;
+  margin-bottom: 3rem;
+}
+.login-stm{
+  padding-top: 25px;
+}
+.register-stm{
+  padding-top: 100px;
 }
 // login & regsiter form styles end
 

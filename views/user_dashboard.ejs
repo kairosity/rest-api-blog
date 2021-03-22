@@ -9,19 +9,17 @@
 <main class="flex-container">
     
     <section class="feature">
+        <%- include('./partials/skip-to-main.ejs') %>
         <div class="container d-flex flex-column">
-            <h1 class="main-heading dark-text">Welcome <%= user %>. This is your Health Blog Dashboard</h1>
+            <h1 class="main-heading dark-text">Welcome <%= username %>. This is your Health Blog Dashboard</h1>
             <p class="lead">
-                This is where you can view articles you've saved, comments you've made and other such things.
+                This is where you can view the articles you've saved.
             </p>
-            <div  class="content-hint align-self-center d-flex flex-column">
-                <a class="align-self-center d-flex flex-column" href="#firstSection">
-                <h4 class="align-self-center" >Scroll down to learn more...</h4>
-                <a href="/logout" class="btn btn-secondary">Logout</a>
-                <i class="fas fa-chevron-down align-self-center"></i>
-                </a>
-            </div>
         </div>
+    </section>
+    <section id="main">
+        <div>post col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 post-container</div>
+        <h2 class="main-heading">Saved Blog Posts</h2>
     </section>
 </main>
 

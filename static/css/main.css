@@ -16770,7 +16770,7 @@ body main {
   padding-bottom: 20px;
 }
 body main .feature {
-  background: url(../images/navbar-img4.jpg) no-repeat;
+  background: url(../images/home.jpg) no-repeat;
   background-position: center center;
   height: 500px;
   padding: 2rem 0;
@@ -16792,6 +16792,7 @@ body main .feature .container h1, body main .feature .container .h1 {
 body main .feature .container p {
   color: #343a40;
   font-size: 1rem;
+  list-style-type: none;
 }
 body main .feature .container .content-hint {
   margin-top: 1rem;
@@ -16807,6 +16808,20 @@ body main .feature .container .content-hint a h4, body main .feature .container 
 body main .feature .container .content-hint a .fa-chevron-down {
   color: #343a40;
   font-size: 0.9rem;
+}
+
+a.skip-to-main {
+  opacity: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  pointer-events: none;
+  cursor: default;
+  padding-top: 80px;
+}
+
+a.skip-to-main:focus {
+  color: #002ab3;
+  opacity: 1;
 }
 
 .white-text {
@@ -16857,6 +16872,19 @@ body main .feature .container .content-hint a .fa-chevron-down {
   margin-bottom: 3rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border-radius: 5px;
+}
+
+.register-form {
+  margin-top: 0rem;
+  margin-bottom: 3rem;
+}
+
+.login-stm {
+  padding-top: 25px;
+}
+
+.register-stm {
+  padding-top: 100px;
 }
 
 .card {

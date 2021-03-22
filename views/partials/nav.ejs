@@ -11,6 +11,9 @@
             </li>
             <% if (session === true) { %>
                 <li class="nav-item">
+                    <a class="nav-link hvr-underline-from-center" aria-current="page" href="/user-dashboard"><%= username %>'s Dashboard</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link hvr-underline-from-center" aria-current="page" href="/logout">Logout</a>
                 </li>
             <% } else if (session === false) { %>

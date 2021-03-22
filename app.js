@@ -10,15 +10,13 @@ const blogRoutes = require('./routes/blogRoutes');
 const userRoutes = require('./routes/userRoutes');
 const morgan = require('morgan');
 const passport = require('passport');
+const {getSession, getUser} = require('./helpers');
 
 const flash = require('connect-flash');
 const { mongoURL, SESSION_LIFETIME, SESSION_SECRET } = require('./config');
 
 // Passport config
 require('./passport-config')(passport);
-
-
-// const users = User.find();
 
 // Create Express App
 const app = express();
@@ -31,7 +29,7 @@ mongoose.connect(mongoURL, {
 
 app.set('view engine', 'ejs');
 
-// middleware & static files
+// Middleware & Static files
 app.use(express.static('static'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -46,7 +44,7 @@ app.use(session({
         saveUnitialized: true,
 }));
 
-// Passport middleware
+// Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -61,22 +59,20 @@ app.use((request, response, next) => {
     next();
 });
 
-
-// blog routes
+// Blog routes
 app.use(blogRoutes);
-// user routes
+// User routes
 app.use(userRoutes);
 
 // 404 Page View
 app.use((request, response) => {
 
-    let session;
-    let passport = request.session.passport;
-    if (Object.keys(passport).length < 1 || passport == null){
-        session = false;
-    } else {
-        session = true;
-    }
+    let session = getSession(request);
+    let username = getUser(request);
 
-    response.status(404).render('404', { title: "404 Not Found!", session: session });
+    response.status(404).render('404', { 
+                                        title: "404 Not Found!", 
+                                        session: session,
+                                        username: username 
+                                    });
 });
