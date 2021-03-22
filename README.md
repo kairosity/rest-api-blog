@@ -17,37 +17,40 @@ A blog application that interacts with faux REST API: JSON Server.
 
 # Site Wide:
 - Fully responsive navbar with 3 links. 
-- Search field - not currently hooked up to anything. 
+- Search form successfully queries the blog posts for keywords and returns the results ordered by most recent first.
 - Fully responsive dummy footer replete with social media & 3 sets of other dummy links. 
 
-## Landing Page:
-- Header and page intro with content hinting down to..
-- Full list of blog articles sorted by date (most recent first).
-- (Will paginate)
+## Landing Page Features:
+- A header and page intro with content hinting.
+- The full list of blog articles sorted by date (most recent first).
 - Each article "card" links to the actual article page.
 - Article thumbnails are responsive & look good on all screens.
 
-## Blog Article Page:
-- Header with health-related inspirational quote. 
-- Blog Article Title, author, author's photo & date published laid out in a clean minimalist design
-in keeping with the theme of the site.
-- Add comment form above the comments for good UX. 
-- Comments displayed in a single column, most recent listed first. 
+## Blog Article Page Features:
+- A header with a rotating health-related inspirational quote.
+- The blog post itself including: Title, author, author's photo, post photo, date published and content. All 
+  laid out in a clean minimalist design in keeping with the tone of the site.
+- The add comment form sits above the comments themselves for good UX.
+- Comments are displayed in a single column, most recent listed first.
 - Adding comments is fully functional.
 - Replying & deleting comments is not functional.
 
-
 ## Back-End
+- The index page fetches blog listings successfully from the JSON-Server API.
+- The blog post page fetches a single blog post from the JSON-SERVER API.
+- The add comment form fetches a POST request from the JSON-SERVER API.
 - The site is connected successfully to MongoDB 
-- User registration works and is validated by Joi.
+- User registration works, the user data is validated by Joi, the user password is hashed using 
+  bcrypt and users are saved to a User object in Mongo.
 
 <br>
 
 # Future Potential Functionality
-- Users can register & login & a session is started when they do the latter.
+- Pagination of the index page blog listings.
+- Registered users can login & a session is started when they do.
 - Only logged in users can comment.
-- Users can delete and edit their own comments. 
-- There is an admin login.
+- Users can delete and edit their own comments.
+- There is also an admin login.
 - Admins can create new blog posts.
 - Admins can edit & delete blog posts.
 

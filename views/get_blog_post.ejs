@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head.ejs') %>
+<meta name="description" content="<%= post.description %>">
     <body>
         <%- include('./partials/nav.ejs') %>
             <main class="blog-post-container container-fluid">
@@ -18,7 +19,7 @@
                 <section class="blog-post">
                     <div class="row">
                         <div class="col-sm-3 offset-sm-1 col-md-3 offset-md-1 mx-5 back-col">
-                            <a class="hvr-underline-from-center" href="<%= source_url %>"><p class="back-button"><i class="fas fa-long-arrow-alt-left"></i> Take me back</p></a> 
+                            <a class="hvr-underline-from-center" href="/blog"><p class="back-button"><i class="fas fa-long-arrow-alt-left"></i> Back to all posts</p></a> 
                         </div>
                         <div class="post col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 post-container d-flex flex-column">
                             <h1 class="post-title align-self-center p-3"><%= post.title %></h1>
@@ -85,9 +86,10 @@
                             <%= comment.content %>
                         </p>
                         <a href="" class="replyComment btn btn-outline-primary btn-sml" type="button" data-bs-toggle="collapse" data-bs-target="#replyTo<%= comment.id %>" 
-                            aria-expanded="false" aria-controls="collapseExample" data-comId="<%= comment.id %>">Reply</a>
-                        <a href="" class="deleteComment btn btn-outline-danger" data-comId="<%= comment.id %>">Delete</a>
-
+                            aria-expanded="false" aria-controls="collapseExample">Reply</a>
+                        <a  class="deleteComment btn btn-outline-danger" data-commentid="<%= comment.id %>">Delete </a>
+                        
+                        <!-- href="/blog/<%= post.slug %>" -->
                         <div class="collapse" id="replyTo<%= comment.id %>">
                             <div class="">
                             <form class="reply-comment-form">
@@ -120,18 +122,17 @@
 
                 <%- include('./partials/scripts.ejs') %>
 
-                    <!-- <script>
-                const trash = document.querySelector('a.deleteComment');
-                console.log(trash.dataset.comId)
-                trash.addEventListener('click', (e) => {
-                    console.log(trash.dataset.comId);
-                    const endpoint = fetch(`http://localhost:9000/comments?id=${trash.dataset.comId}`);
-                    fetch(endpoint, {
-                        method: 'DELETE'
-                    })
-                    .then(() => {})
-                    .catch(err => console.log(err));
-                });
+                <!-- <script>
+                const allCommentDelBtns = document.querySelectorAll('a.deleteComment');
+
+                allCommentDelBtns.forEach(commentDelBtn => {
+                    commentDelBtn.addEventListener("click", async function(e){
+                        console.log(commentDelBtn.dataset.commentid);
+                        const endpoint = await fetch(`http://localhost:9000/comments?id=${commentDelBtn.dataset.commentid}`, {
+                            method: 'DELETE',
+                            })
+                        });
+                    });
 
             </script> -->
     </body>

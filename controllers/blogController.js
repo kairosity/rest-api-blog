@@ -1,22 +1,47 @@
 const { commentSchema } = require('../validation_schema.js')
 const fetch = require('node-fetch');
+const { response } = require('express');
 
 /* Blog Index Page / Landing Page
 - Returns a list of all the blogs in descending order by publish date using a query string.
 */
 const blog_index = async (request, response) => {
+
     async function getAllBlogPosts(){
-        let uri = 'http://localhost:9000/posts?_sort=publish_date&_order=desc';
+
+        let uri = `http://localhost:9000/posts?_sort=publish_date&_order=desc`;
+
         const fetch_response = await fetch(uri);
         let posts = await fetch_response.json();
-        return posts
+    
+        return posts;
     }
     const posts = await getAllBlogPosts();
 
     response.render('index', { title: "Health Blog", posts: posts });
 };
+/* Blog Search Function
+- Returns a filtered list of all the blog posts that match the search term in descending order by publish date.
+*/
+const blog_search = async(request, response) => {
 
-/* Blog Detais Page
+    let keyword = request.query.keyword;
+
+    async function getFilteredBlogPosts(searchTerm){
+
+        let uri = `http://localhost:9000/posts?q=${searchTerm}&_sort=publish_date&_order=desc`;
+        const fetch_response = await fetch(uri);
+        let posts = await fetch_response.json();
+        return posts;
+    }
+    const posts = await getFilteredBlogPosts(keyword);
+
+    response.render('index', { title: `Health Blog: ${keyword}`, posts: posts });
+
+};
+
+
+/* Blog Details Page
 - Returns the specific blog post from the api using the slug.
 - Returns all associated comments.
 - Creates a list of quotes and conditional code re: when to post which quote on the blog post header.
@@ -28,14 +53,15 @@ const blog_details = async (request, response) => {
     const getPost = async () => {
         let uri = `http://localhost:9000/posts?slug=${slug}`;
         const fetch_response = await fetch(uri);
-        if (fetch_response.status !== 200){
-            throw new Error();
-        }
         let post = await fetch_response.json();
         return post[0];
     };
     let post = await getPost();
 
+    if (post == undefined){
+        response.status(404).render('404', { title: "404 Not Found!" });
+    }
+    
     // Cleanses the post content of all the <p></p> tags:
     const regex1 = /<p>/g;
     const regex2 = /<\/p>/g;
@@ -110,7 +136,7 @@ const blog_details = async (request, response) => {
                                         postContent: sanitizedContent2,
                                         comments: commentsToUse, 
                                         id: id, 
-                                        title: "Blog Post", 
+                                        title: `Blog Post: ${post.title} `, 
                                         quote:quote, 
                                         quote_author:quote_author,
                                         source_url: source_url});
@@ -148,6 +174,7 @@ const post_comment = async (request, response) => {
 
 module.exports = {
     blog_index,
+    blog_search,
     blog_details,
     post_comment
 };

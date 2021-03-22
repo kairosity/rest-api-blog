@@ -11,15 +11,13 @@ router.get('/', async (request, response) => {
 // GET HOME
 router.get('/blog', blogController.blog_index);
 
+// GET FILTERED SEARCH
+router.get('/blog/search', blogController.blog_search);
+
 // GET INDIVIDUAL BLOG POST & ASSOCIATED COMMENTS
 router.get('/blog/:slug', blogController.blog_details);
 
 // POST A COMMENT 
 router.post('/blog/:slug', blogController.post_comment);
-
-// DELETE A COMMENT
-router.delete('/:slug', async (request, response) => {
-    console.log('got here')
-});
 
 module.exports = router;

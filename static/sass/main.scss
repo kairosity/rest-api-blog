@@ -12,11 +12,13 @@ $enable-shadows: true;
 $primary: $indigo;
 $main-text-color: $gray-800;
 $box-shadow:  0px 3px 15px rgba(0,0,0,0.2);
+$form-box-shadow:  rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 $subheading-color: $gray-800;
 $byline-color: $gray-600;
 $transparency-white:rgba(255,255,255, 0.2);
 $blog-heading-font: "Work Sans";
 $blog-p-font: "Source Sans Pro";
+$subtle-corners : 5px;
 // custom variables end
 
 // HOVER ANIMATIONS FROM HOVER.CSS start
@@ -69,6 +71,7 @@ body{
         box-shadow: $box-shadow;
         padding: 30px 50px;
         margin-top: 6rem;
+        border-radius: $subtle-corners;
         h1{
           font-size: 2rem;
           color: $indigo;
@@ -125,12 +128,21 @@ body{
       color: $pink;
     }
   }
-  .navbar-nav .nav-item .nav-link{
-  color: $indigo;
-  font-weight: 500;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
+  .navbar-nav{
+    .nav-item {
+      .nav-link{
+        color: $indigo;
+        font-weight: 500;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        
+      } 
+    }  
   }
+}
+
+.nav-item.active{
+  background-color: red;
 }
 
 // navigation styles end
@@ -146,12 +158,16 @@ body{
 }
 // button styles end
 
-// LOGIN FORM STYLES start
-.login-form{
+
+// LOGIN & REGISTER FORM STYLES start
+.login-form,
+.register-form{
   margin-top: 6rem;
   margin-bottom: 3rem;
+  box-shadow: $form-box-shadow;
+  border-radius: $subtle-corners;
 }
-// login form styles end
+// login & regsiter form styles end
 
 // CARD STYLES start
 .card{
@@ -192,7 +208,6 @@ body{
 // blog post details page styles end
 
 // BLOG POST HEADER STYLES start
-
 .blog-post-header{
   padding-top: 10px;
       .header-bg{
@@ -234,7 +249,7 @@ section.blog-post{
     .back-col{
       a{
         text-decoration: none;
-        font-size: 1.2rem;
+        font-size: 0.9rem;
         color: $indigo;
         transition: all 0.2s ease-in-out;
         transition-duration: 0.75s;
@@ -394,6 +409,14 @@ footer {
 } 
 // footer styles end
 
+// 404 PAGE STYLES start
+.main-404{
+  height: 70vh;
+  .heading-404{
+    padding: 5rem 0;
+  }
+}
+// 404 page styles end
 
 // ANIMATIONS start
 
@@ -460,7 +483,8 @@ footer {
 // MEDIA QUERIES start
 
 @include media-breakpoint-up(md){
-// BACKGROUND PAGE STYLES start
+
+// BACKGROUND PAGE STYLES (md & up) start
 body{
   main{
     .feature{
@@ -486,8 +510,9 @@ body{
       }
     }
   }
-  // BLOG POST HEADER STYLES start
+  // background page styles (md & up) end
 
+  // BLOG POST HEADER STYLES (md & up) start
 .blog-post-header{
       .header-bg{
         .container{
@@ -504,11 +529,19 @@ body{
 
       }
   }
-
-// blog post header styles end
-
+// blog post header styles (md & up) end
+section.blog-post{
+  .row{
+    .back-col{
+      a{
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
 
 }
+// media breakpoint md end
 
 @include media-breakpoint-up(lg) {
 // BACKGROUND PAGE STYLES start
@@ -548,5 +581,6 @@ body{
     clip-path: ellipse(100% 100% at 50% 100%);
   }
  }
+ // media breakpoint lg end
 
 //  media queries end

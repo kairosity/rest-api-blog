@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head.ejs') %>
+<meta name="description" content='Register a free account with Health Blog to gain access to super useful and exclusive Health Blog deals
+and other enticing things.'>
 
     <body>
         <%- include('./partials/nav.ejs') %>
@@ -8,8 +10,9 @@
             <main>
                 <div class="container">
                     <div class="row">
-                            <div class="form-container col col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 pt-4">
+                            <div class="form-container register-form col col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 p-5">
                                     <h1 class="mt-4">Register</h1>
+                                    <%- include ('./partials/messages') %>
                                     <form class="mt-4" action="/register" method="POST">
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username</label>

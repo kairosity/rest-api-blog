@@ -1,12 +1,24 @@
 const { render } = require('ejs');
 const express = require('express');
-require('dotenv').config();
+const session = require('express-session');
+if (process.env.NODE_ENV !== 'production'){
+    require('dotenv').config();
+}
 const mongoose = require('mongoose');
+const User = require('./models/users');
 const blogRoutes = require('./routes/blogRoutes');
 const userRoutes = require('./routes/userRoutes');
 const morgan = require('morgan');
-const { mongoURL } = require('./config');
+const passport = require('passport');
 
+const flash = require('connect-flash');
+const { mongoURL, SESSION_LIFETIME, SESSION_SECRET } = require('./config');
+
+// Passport config
+require('./passport-config')(passport);
+
+
+// const users = User.find();
 
 // Create Express App
 const app = express();
@@ -22,30 +34,39 @@ app.set('view engine', 'ejs');
 // middleware & static files
 app.use(express.static('static'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
+
+// Express Session
+app.use(session({
+        secret: SESSION_SECRET,
+        maxAge: SESSION_LIFETIME,
+        sameSite: true,
+        resave: true,
+        saveUnitialized: true,
+}));
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session())
+
+// Connect Flash
+app.use(flash());
+
+// Global Variables for Flash Messages
+app.use((request, response, next) => {
+    response.locals.success_msg = request.flash('success_msg');
+    response.locals.error_msg = request.flash('error_msg');
+    response.locals.error = request.flash('error');
+    next();
+})
+
+
 
 // blog routes
 app.use(blogRoutes);
 // user routes
 app.use(userRoutes);
-
-
-
-// GET CREATE NEW BLOG (Admin only)
-app.get('/blog/create', (request, response) => {
-    response.render('create', { title: "Create New Blog Post" })
-});
-
-// POST CREATE NEW BLOG (Admin only)
-app.post('/blog/create', (request, response) => {
-    response.render('create', { title: "Create New Blog Post" })
-});
-
-// GET About Page View
-app.get('/about', (request, response) => {
-    response.render('about', { title: "About" });
-});
 
 // 404 Page View
 app.use((request, response) => {

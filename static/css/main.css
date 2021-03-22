@@ -16781,6 +16781,7 @@ body main .feature .container {
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   padding: 30px 50px;
   margin-top: 6rem;
+  border-radius: 5px;
 }
 body main .feature .container h1, body main .feature .container .h1 {
   font-size: 2rem;
@@ -16837,6 +16838,10 @@ body main .feature .container .content-hint a .fa-chevron-down {
   letter-spacing: 1px;
 }
 
+.nav-item.active {
+  background-color: red;
+}
+
 .btn-primary {
   background-color: #0366c4;
   border-color: #0366c4;
@@ -16846,9 +16851,12 @@ body main .feature .container .content-hint a .fa-chevron-down {
   border-color: transparent;
 }
 
-.login-form {
+.login-form,
+.register-form {
   margin-top: 6rem;
   margin-bottom: 3rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 5px;
 }
 
 .card {
@@ -16917,7 +16925,7 @@ section.blog-post {
 }
 section.blog-post .row .back-col a {
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: #002ab3;
   transition: all 0.2s ease-in-out;
   transition-duration: 0.75s;
@@ -17037,6 +17045,13 @@ footer p.copyright-notice {
   color: #343a40;
 }
 
+.main-404 {
+  height: 70vh;
+}
+.main-404 .heading-404 {
+  padding: 5rem 0;
+}
+
 .fa-chevron-down {
   -webkit-animation: down-arrow 2s ease-in infinite;
   animation: down-arrow 2s ease-in infinite;
@@ -17124,6 +17139,10 @@ footer p.copyright-notice {
   .blog-post-header .header-bg .container p {
     font-weight: 400;
     font-size: 1.3rem;
+  }
+
+  section.blog-post .row .back-col a {
+    font-size: 1.2rem;
   }
 }
 @media (min-width: 992px) {
