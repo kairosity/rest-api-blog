@@ -8,7 +8,7 @@ A blog application that interacts with faux REST API: JSON Server.
 
 ### 2. Type *__npm run api__* in a terminal window to start the JSON Server REST API.
 
-### 3. Type *__nodemon app__* in a separate terminal to run the blog application.
+### 3. Type *__node app.js__* in a separate terminal to run the blog application.
 
 ### 4. Navigate to *__http://localhost:3000/__* to view the application.
 <br>
