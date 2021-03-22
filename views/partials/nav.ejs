@@ -9,12 +9,18 @@
             <li class="nav-item">
             <a class="nav-link hvr-underline-from-center" aria-current="page" href="/blog">Home</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link hvr-underline-from-center" href="/register">Register</a>
-            </li>
-            <li class="nav-item ">
-            <a class="nav-link hvr-underline-from-center" href="/login">Login</a>
-            </li>
+            <% if (session === true) { %>
+                <li class="nav-item">
+                    <a class="nav-link hvr-underline-from-center" aria-current="page" href="/logout">Logout</a>
+                </li>
+            <% } else if (session === false) { %>
+                <li class="nav-item">
+                <a class="nav-link hvr-underline-from-center" href="/register">Register</a>
+                </li>
+                <li class="nav-item ">
+                <a class="nav-link hvr-underline-from-center" href="/login">Login</a>
+                </li>
+            <% } %>
         </ul>
         <form class="d-flex search" action="/blog/search" method="GET">
             <input class="form-control me-2" type="text" name="keyword" placeholder="Search Posts" aria-label="Search">

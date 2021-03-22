@@ -8,7 +8,6 @@ const { response } = require('express');
 const blog_index = async (request, response) => {
 
     async function getAllBlogPosts(){
-
         let uri = `http://localhost:9000/posts?_sort=publish_date&_order=desc`;
 
         const fetch_response = await fetch(uri);
@@ -17,8 +16,16 @@ const blog_index = async (request, response) => {
         return posts;
     }
     const posts = await getAllBlogPosts();
+    let session;
+    let passport = request.session.passport;
+    if (passport == null || Object.keys(passport).length < 1){
+        session = false;
+    } else {
+        session = true;
+    }
+    console.log(request.session)
 
-    response.render('index', { title: "Health Blog", posts: posts });
+    response.render('index', { title: "Health Blog", posts: posts, session: session });
 };
 /* Blog Search Function
 - Returns a filtered list of all the blog posts that match the search term in descending order by publish date.
@@ -35,8 +42,15 @@ const blog_search = async(request, response) => {
         return posts;
     }
     const posts = await getFilteredBlogPosts(keyword);
-
-    response.render('index', { title: `Health Blog: ${keyword}`, posts: posts });
+    let session;
+    let passport = request.session.passport;
+    if (passport == null || Object.keys(passport).length < 1){
+        session = false;
+    } else {
+        session = true;
+    }
+    console.log(request.session)
+    response.render('index', { title: `Health Blog: ${keyword}`, posts: posts, session: session });
 
 };
 
@@ -131,6 +145,14 @@ const blog_details = async (request, response) => {
     }
 
     const source_url = request.header('Referer');
+    let session;
+    let passport = request.session.passport;
+    if (passport == null || Object.keys(passport).length < 1){
+        session = false;
+    } else {
+        session = true;
+    }
+    console.log(request.session)
 
     response.render('get_blog_post', {  post: post,
                                         postContent: sanitizedContent2,
@@ -139,7 +161,9 @@ const blog_details = async (request, response) => {
                                         title: `Blog Post: ${post.title} `, 
                                         quote:quote, 
                                         quote_author:quote_author,
-                                        source_url: source_url});
+                                        source_url: source_url,
+                                        session: session
+                                    });
 };
 
 

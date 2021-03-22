@@ -10,13 +10,14 @@
     
     <section class="feature">
         <div class="container d-flex flex-column">
-            <h1 class="main-heading dark-text">Welcome to your Health Blog Dashboard</h1>
+            <h1 class="main-heading dark-text">Welcome <%= user %>. This is your Health Blog Dashboard</h1>
             <p class="lead">
-                This is where you can view ......
+                This is where you can view articles you've saved, comments you've made and other such things.
             </p>
             <div  class="content-hint align-self-center d-flex flex-column">
                 <a class="align-self-center d-flex flex-column" href="#firstSection">
                 <h4 class="align-self-center" >Scroll down to learn more...</h4>
+                <a href="/logout" class="btn btn-secondary">Logout</a>
                 <i class="fas fa-chevron-down align-self-center"></i>
                 </a>
             </div>

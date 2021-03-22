@@ -48,7 +48,7 @@ app.use(session({
 
 // Passport middleware
 app.use(passport.initialize());
-app.use(passport.session())
+app.use(passport.session());
 
 // Connect Flash
 app.use(flash());
@@ -59,8 +59,7 @@ app.use((request, response, next) => {
     response.locals.error_msg = request.flash('error_msg');
     response.locals.error = request.flash('error');
     next();
-})
-
+});
 
 
 // blog routes
@@ -70,5 +69,14 @@ app.use(userRoutes);
 
 // 404 Page View
 app.use((request, response) => {
-    response.status(404).render('404', { title: "404 Not Found!" });
+
+    let session;
+    let passport = request.session.passport;
+    if (Object.keys(passport).length < 1 || passport == null){
+        session = false;
+    } else {
+        session = true;
+    }
+
+    response.status(404).render('404', { title: "404 Not Found!", session: session });
 });

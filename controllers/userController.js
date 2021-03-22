@@ -1,15 +1,21 @@
 const { authSchema } = require('../validation_schema.js');
-const createError = require('http-errors');
 const User = require('../models/users');
-
 const bcrypt = require('bcryptjs');
-const saltRounds = 12;
-const fetch = require('node-fetch');
 
 
 // get register_page
 const register_user_page = (request, response) => {
-    response.render('register', { title: "Register" });
+    
+    let session;
+    let passport = request.session.passport;
+    if (passport == null || Object.keys(passport).length < 1){
+        session = false;
+    } else {
+        session = true;
+    }
+    console.log(request.session)
+    console.log(session)
+    response.render('register', { title: "Register", session: session });
 };
 
 // register_user
@@ -56,7 +62,7 @@ const register_user = async (request, response, next) => {
                 password: result.password
             });
 
-            // const hashedPassword = await bcrypt.hash(result.password, 10);
+            // Salt & Hash User Password before saving to db
             bcrypt.genSalt(10, (err, salt) => 
                 bcrypt.hash(result.password, salt, (err, hash) => {
                     if(err) throw err;
@@ -67,11 +73,8 @@ const register_user = async (request, response, next) => {
                             response.redirect('/login');
                         })
                         .catch(err => console.log(err));
-
                 }));
-
         }
-
     } catch (error) {
         
         if (error.isJoi === true) error.status = 422;
@@ -82,18 +85,46 @@ const register_user = async (request, response, next) => {
 
 // get login page
 const login_page = (request, response) => {
-    response.render('login', { title: "Login" });
+    
+    let session;
+    let passport = request.session.passport;
+    if (passport == null || Object.keys(passport).length < 1){
+        session = false;
+    } else {
+        session = true;
+    }
+    console.log(request.session)
+    response.render('login', { title: "Login", session: session });
 };
 
 // get user dashboard
 const user_dashboard = (request, response) => {
-    response.render('user_dashboard', { title: "User Dashboard" });
+    let session;
+    let passport = request.session.passport;
+    if (passport == null || Object.keys(passport).length < 1){
+        session = false;
+    } else {
+        session = true;
+    }
+    console.log(request.session)
+    response.render('user_dashboard', { 
+                    title: "User Dashboard", 
+                    user: request.user.username,
+                    session: session 
+                    });
 };
 
+// logout
+const logout = (request, response) => {
+    request.logout();
+    request.flash('success_msg', 'You have been successfully logged out.');
+    response.redirect('login');
+};
 
 module.exports = {
     register_user_page,
     register_user,
     login_page,
-    user_dashboard
+    user_dashboard,
+    logout
 };
