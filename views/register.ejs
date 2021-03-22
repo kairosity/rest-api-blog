@@ -1,68 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head.ejs') %>
-<meta name="description" content='Register a free account with Health Blog to gain access to super useful and exclusive Health Blog deals
+    <meta name="description" content='Register a free account with Health Blog to gain access to super useful and exclusive Health Blog deals
 and other enticing things.'>
 
     <body>
+<!-- Navigation -->
         <%- include('./partials/nav.ejs') %>
-        <aside class="register-stm">
-            <%- include('./partials/skip-to-main.ejs') %>
-          </aside>
+            <aside class="register-stm">
+                <%- include('./partials/skip-to-main.ejs') %>
+            </aside>
             <main>
                 <div class="container">
                     <div id="main" class="row">
-                            <div class="form-container register-form col col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 p-5">
-                                    <h1  class="mt-4">Register</h1>
-                                    <%- include ('./partials/messages') %>
-                                    <form class="mt-4" action="/register" method="POST">
-                                        <div class="mb-3">
-                                            <label for="username" class="form-label">Username</label>
-                                            <input type="text" name="username" class="form-control" id="username"
-                                                aria-describedby="username" required>
+                        <div
+                            class="form-container register-form col col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 p-5">
+                            <h1 class="mt-4">Register</h1>
+                            <%- include ('./partials/messages') %>
+<!-- Registration Form -->
+                                <form class="mt-4" action="/register" method="POST">
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" name="username" class="form-control" id="username"
+                                            aria-describedby="username" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email address</label>
+                                        <input type="email" name="email" class="form-control" id="email"
+                                            aria-describedby="emailHelp" required>
+                                        <div id="emailHelp" class="form-text">We'll never share your email with
+                                            anyone else.
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">Email address</label>
-                                            <input type="email" name="email" class="form-control" id="email"
-                                                aria-describedby="emailHelp" required>
-                                            <div id="emailHelp" class="form-text">We'll never share your email with
-                                                anyone else.
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="password" class="form-label">Password</label>
-                                            <input type="password" name="password" class="form-control" id="password"
-                                                aria-describedby="passwordHelp">
-                                            <div id="passwordHelp" class="form-text">Please choose a password</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="passwordConfirmation" class="form-label">Password
-                                                Confirmation</label>
-                                            <input type="password" name="passwordConfirmation" class="form-control"
-                                                id="passwordConfirmation" aria-describedby="passwordConfirmationHelp">
-                                            <div id="passwordConfirmationHelp" class="form-text">Please enter your new
-                                                password
-                                                again</div>
-                                        </div>
-                                        <div class="mb-3 form-check">
-                                            <input type="checkbox" name="marketing" class="form-check-input"
-                                                id="marketing">
-                                            <label class="form-check-label" for="marketing">Please send me a monthly
-                                                email
-                                                update.</label>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Register</button>
-                                    </form>
-                                </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" name="password" class="form-control" id="password"
+                                            aria-describedby="passwordHelp">
+                                        <div id="passwordHelp" class="form-text">Please choose a password</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="passwordConfirmation" class="form-label">Password
+                                            Confirmation</label>
+                                        <input type="password" name="passwordConfirmation" class="form-control"
+                                            id="passwordConfirmation" aria-describedby="passwordConfirmationHelp">
+                                        <div id="passwordConfirmationHelp" class="form-text">Please enter your new
+                                            password
+                                            again</div>
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" name="marketing" class="form-check-input" id="marketing">
+                                        <label class="form-check-label" for="marketing">Please send me a monthly
+                                            email
+                                            update.</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </form>
+                        </div>
                     </div>
 
                 </div>
             </main>
-
+<!-- Footer -->
             <%- include('./partials/footer.ejs') %>
-
-                <%- include('./partials/scripts.ejs') %>
-
+            <%- include('./partials/scripts.ejs') %>
     </body>
-
 </html>

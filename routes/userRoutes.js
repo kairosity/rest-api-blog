@@ -4,7 +4,6 @@ const router = express.Router();
 const passport = require('passport');
 const { ensureAuthenticated } = require('../auth')
 
-
 // GET REGISTER PAGE
 router.get('/register', userController.register_user_page);
 
@@ -28,6 +27,5 @@ router.get('/user-dashboard', ensureAuthenticated, userController.user_dashboard
 
 // LOGOUT
 router.get('/logout', userController.logout);
-
 
 module.exports = router;

@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const {getSession, getUser} = require('../helpers');
 
 
-// get register_page
+// Gets the register form page.
 const register_user_page = (request, response) => {
     
     let session = getSession(request);
@@ -16,7 +16,19 @@ const register_user_page = (request, response) => {
                                 });
 };
 
-// register_user
+/* Registers a new user.
+- Takes in all the form details.
+- Passes them through the Joi validation schema.
+- Instantiates an empty errors array for using with flash messages.
+- Checks a number of custom validations:
+    - Does the username or email already exist? 
+    - Does the password match the password confirmation value? 
+- If the form inputs don't pass any of the validations (if there are errors in the array):
+    - Reloads the register page and flashes the error messages to the user.
+- Otherwise: creates a new user object.
+- Salts & Hashes the (now validated) password using Bcryptjs.
+- Saves the new user object to the Mongo DB, using Mongoose.
+*/
 const register_user = async (request, response, next) => {
 
     try {
@@ -81,7 +93,7 @@ const register_user = async (request, response, next) => {
     }
 };
 
-// get login page
+// Renders the login page.
 const login_page = (request, response) => {
     
     let session = getSession(request);
@@ -94,7 +106,7 @@ const login_page = (request, response) => {
                     });
 };
 
-// get user dashboard
+// Renders the User Dashboard
 const user_dashboard = (request, response) => {
     
     let session = getSession(request);
@@ -108,7 +120,7 @@ const user_dashboard = (request, response) => {
                     });
 };
 
-// logout
+// Logs the user out using passport.js (request.logout)
 const logout = (request, response) => {
     request.logout();
     request.flash('success_msg', 'You have been successfully logged out.');

@@ -54,7 +54,7 @@ would appear listed on the dashboard, which when clicked, would redirect to the 
 - User data is validated first by Bootstrap Forms, then by Joi, then by custom validations.
 - Users are authenticated using Passport.js
 
-## SEO
+## SEO
 - Meta tags are incorporated into all pages. Most importantly: geo, keywords & description.
 - All pages have relevant "keyworded" title tags.
 - The blog details page uses keyword-rich "slugs" instead of ids.
@@ -68,7 +68,7 @@ would appear listed on the dashboard, which when clicked, would redirect to the 
 - Colour-blind accessible - checked using the web disability simulator Chrome plugin.
 - Site is viewable & functional up to page zoom of 200%.
 - All forms have ariaDescribedBy attributes.
-- Wherever possible and logical, HTML elements are semantic. Posts are <articles> etc..
+- Wherever possible and logical, HTML elements are semantic. Posts are ```<articles>``` etc..
 - All photos have alt tags.
 
 <br>

@@ -4,8 +4,11 @@
     <meta name="description" content="<%= post.description %>">
 
     <body>
+<!-- Navigation -->
         <%- include('./partials/nav.ejs') %>
+<!-- Main -->
             <main class="blog-post-container container-fluid">
+<!-- Blog Post Header / Inspirational Quotes -->
                 <section class="blog-post-header">
                     <div class="row">
                         <div class="header-bg d-flex align-items-center">
@@ -19,11 +22,13 @@
                 </section>
                 <section id="main" class="blog-post">
                     <div class="row">
+<!-- Back to All Posts Link -->
                         <div class="col-sm-3 offset-sm-1 col-md-3 offset-md-1 mx-5 back-col">
                             <a class="hvr-underline-from-center" href="/blog">
                                 <p class="back-button"><i class="fas fa-long-arrow-alt-left"></i> Back to all posts</p>
                             </a>
                         </div>
+<!-- Blog Post -->
                         <article
                             class="post col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 post-container d-flex flex-column">
                             <h1 class="post-title align-self-center p-3">
@@ -53,7 +58,9 @@
                                 </div>
                             </div>
                         </article>
+<!-- Blog Post End -->
                 </section>
+<!-- Add Comment Form -->
                 <section class="add-comment">
                     <form class="commentForm col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3"
                         action="/blog/<%= post.slug %>" method="post">
@@ -85,7 +92,7 @@
                         <hr class="mt-4">
                     </form>
                 </section>
-
+<!-- Comments Listed -->
                 <section class="blog-comments col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                     <div class="blog-comments-container">
                         <% if (comments.length==1) { %>
@@ -144,9 +151,8 @@
                     </div>
                 </section>
             </main>
-
+<!-- Footer -->
             <%- include('./partials/footer.ejs') %>
-            <%- include('./partials/scripts.ejs') %>
+                <%- include('./partials/scripts.ejs') %>
     </body>
-
 </html>

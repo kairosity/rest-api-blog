@@ -55,7 +55,6 @@ const blog_search = async(request, response) => {
 
 };
 
-
 /* Blog Details Page
 - Returns the specific blog post from the api using the slug.
 - Returns all associated comments.

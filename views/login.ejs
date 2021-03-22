@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head.ejs') %>
-<meta name="description" content='Login to your very own Health Blog user account where you can access exclusive information and other 
+  <meta name="description" content='Login to your very own Health Blog user account where you can access exclusive information and other 
 resources.'>
 
   <body>
+<!-- Navigation -->
     <%- include('./partials/nav.ejs') %>
-    
       <main>
         <div class="container">
           <aside class="login-stm">
             <%- include('./partials/skip-to-main.ejs') %>
           </aside>
           <div class="row">
-            <div class="login-form form-container col col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 p-5">
-            <h1 id="main" class="mt-4">Login</h1>
-            <%- include ('./partials/messages') %>
-            <form action="/login" method="POST">
-              <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" name="email" class="form-control" id="email" aria-describedby="email">
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" id="password">
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            </div>  
+            <div
+              class="login-form form-container col col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 p-5">
+              <h1 id="main" class="mt-4">Login</h1>
+              <%- include ('./partials/messages') %>
+<!-- Login Form -->
+                <form action="/login" method="POST">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" name="email" class="form-control" id="email" aria-describedby="email">
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
           </div>
         </div>
       </main>
-
+<!-- Footer -->
       <%- include('./partials/footer.ejs') %>
-
-        <%- include('./partials/scripts.ejs') %>
-
+      <%- include('./partials/scripts.ejs') %>
   </body>
-
 </html>

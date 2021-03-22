@@ -1,4 +1,6 @@
-
+/* Checks to see if there is a session and returns a "session" var: true or false to use
+in views.
+*/
 function getSession(request){
     let session;
     let passport = request.session.passport;
@@ -8,7 +10,9 @@ function getSession(request){
         return session = true;
     }
 }
-
+/* Checks to see if there is a user in session and if there is returns 
+that user's username to use in views.
+*/
 function getUser(request){
     let username;
     let user = request.user;
