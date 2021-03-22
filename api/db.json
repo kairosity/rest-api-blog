@@ -239,6 +239,14 @@
       "user": "helena",
       "date": "2021-03-21",
       "content": "I enjoyed this article rather a lot."
+    },
+    {
+      "id": 17,
+      "postId": 9,
+      "parentId": null,
+      "user": "rae",
+      "date": "2021-03-22",
+      "content": "My name was pre-populated and I just had to write my comment here. That was handy."
     }
   ]
 }

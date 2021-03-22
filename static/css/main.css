@@ -17035,6 +17035,13 @@ section.add-comment h3, section.add-comment .h3 {
   height: 0;
 }
 
+.dashboard-posts-heading {
+  margin-top: 2rem;
+  padding: 1rem;
+  font-size: 3rem;
+  font-weight: 300;
+}
+
 footer {
   background: #dbedf0;
   background-position: center center;

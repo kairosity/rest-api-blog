@@ -40,7 +40,7 @@ A blog application that interacts with faux REST API: JSON Server.
 - If a user is logged in, their username is auto-populated in the "Name" input field of the "Add a New Comment" form.
 
 ## User Dashboard Features
-- This page is not fleshed out. Its purpose is to serve as proof of concept for the registration & login features.
+- This page is not fleshed out. Its' purpose is to serve as proof of concept for the registration & login features.
 - Theoretically I was thinking of attaching a "save post" button to each individual blog article and links to those articles 
 would appear listed on the dashboard, which when clicked, would redirect to the post details page.
 
@@ -56,18 +56,20 @@ would appear listed on the dashboard, which when clicked, would redirect to the 
 
 ## SEO
 - Meta tags are incorporated into all pages. Most importantly: geo, keywords & description.
-- All pages have relevant "keyworded" title tags. 
+- All pages have relevant "keyworded" title tags.
 - The blog details page uses keyword-rich "slugs" instead of ids.
-- All links are functional. 
-- (Hypothetically) - All headings match keyword research & strategies. 
+- All links are functional.
+- (Hypothetically) - All headings match keyword research & strategies.
 
 ## Accessibility
 - All elements are keyboard accessible. 
 - Skip to Main Link functional on all pages for good keyboard user UX & accessibility.
 - Contrast, sizing & colour accessibility is all excellent.
+- Colour-blind accessible - checked using the web disability simulator Chrome plugin.
 - Site is viewable & functional up to page zoom of 200%.
-- All forms have ariaDescribedBy attributes. 
-- Wherever possible and logical HTML elements are semantic. Posts are <articles> etc..
+- All forms have ariaDescribedBy attributes.
+- Wherever possible and logical, HTML elements are semantic. Posts are <articles> etc..
+- All photos have alt tags.
 
 <br>
 
@@ -118,5 +120,4 @@ would appear listed on the dashboard, which when clicked, would redirect to the 
 - Photo by <a href="https://unsplash.com/@victoriabcphotographer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Christina Victoria Craft</a> on <a href="/s/photos/pills?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 - Photo by <a href="https://unsplash.com/@oksanataran?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Oksana Taran</a> on <a href="/s/photos/yoga?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 - Photo by <a href="https://unsplash.com/@nightcoder?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Yuriy Kovalev</a> on <a href="/s/photos/clouds?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  
-  
+ 
